@@ -17,7 +17,6 @@ from urllib import request
 
 # 文件路径定义
 Eterniy = './Eternity'
-readme = './README.md'
 
 sub_list_json = './sub/sub_list.json'
 sub_merge_path = './sub/'
@@ -247,129 +246,6 @@ class sub_merge():
             print('Failed!\n')
             pass
 
-    def readme_update(readme_file='./README.md', sub_list=[]):  # 更新 README 节点信息
-        print('Update README.md file...')
-        with open(readme_file, 'r', encoding='utf-8') as f:
-            lines = f.readlines()
-            f.close()
-        # 获得当前名单及各仓库节点数量
-        with open('./sub/sub_merge.txt', 'r', encoding='utf-8') as f:
-            total = len(f.readlines())
-            total = f'Total number of merged nodes: `{total}`\n'
-            thanks = []
-            repo_amount_dic = {}
-            f.close()
-            for repo in sub_list:
-                # not breaking the process only because of showcase :)
-                try:
-                    line = ''
-                    if repo['enabled'] == True:
-                        id = repo['id']
-                        remarks = repo['remarks']
-                        repo_site = repo['site']
-
-                        sub_file = f'./sub/list/{id:0>2d}.txt'
-                        with open(sub_file, 'r', encoding='utf-8') as f:
-                            proxies = f.readlines()
-                            if proxies == ['Url 解析错误'] or proxies == ['订阅内容解析错误']:
-                                amount = 0
-                            else:
-                                amount = len(proxies)
-                            f.close()
-                        repo_amount_dic.setdefault(id, amount)
-                        line = f'- [{remarks}]({repo_site}), number of nodes: `{amount}`\n'
-                        thanks.append(line)
-                    # if remarks != "mahdibland/SSAggregator":
-                    #     thanks.append(line)
-                except FileNotFoundError:
-                    try:
-                        with open(sub_file, 'r', encoding='utf-8') as f:
-                            proxies = f.readlines()
-                            if proxies == ['Url 解析错误'] or proxies == ['订阅内容解析错误']:
-                                amount = 0
-                            else:
-                                amount = len(proxies)
-                            f.close()
-                        repo_amount_dic.setdefault(id, amount)
-                        line = f'- [{remarks}]({repo_site}), number of nodes: `{amount}`\n'
-                    except:
-                        # ignore it
-                        pass
-                except:
-                    # ignore it
-                    pass
-
-        # 高速节点打印
-        for index in range(len(lines)):
-            if lines[index] == '### high-speed node\n':  # 目标行内容
-                # 清除旧内容
-                lines.pop(index+1)  # 删除节点数量
-                while lines[index+4] != '\n':
-                    lines.pop(index+4)
-
-                with open('./Eternity', 'r', encoding='utf-8') as f:
-                    proxies_base64 = f.read()
-                    proxies = sub_convert.base64_decode(proxies_base64)
-                    proxies = proxies.split('\n')
-                    proxies = ['    '+proxy for proxy in proxies]
-                    proxies = [proxy+'\n' for proxy in proxies]
-                top_amount = len(proxies)
-
-                lines.insert(
-                    index+1, f'high-speed node quantity: `{top_amount}`\n')
-                index += 4
-                for i in proxies:
-                    index += 1
-                    lines.insert(index, i)
-                break
-        # 所有节点打印
-        for index in range(len(lines)):
-            if lines[index] == '### all nodes\n':  # 目标行内容
-                # 清除旧内容
-                lines.pop(index+1)  # 删除节点数量
-
-                # with open('./sub/sub_merge.txt', 'r', encoding='utf-8') as f:
-                with open('./sub/sub_merge_yaml.yml', 'r', encoding='utf-8') as f:
-                    proxies = f.read()
-                    proxies = proxies.split('\n')
-                    top_amount = len(proxies) - 1
-                    f.close()
-                # if it's not yaml method we need to add 1 to the top amount
-                lines.insert(
-                    index+1, f'merge nodes w/o dup: `{top_amount}`\n')
-                """
-                with open('./sub/sub_merge.txt', 'r', encoding='utf-8') as f:
-                    proxies = f.read()
-                    proxies = proxies.split('\n')
-                    proxies = ['    '+proxy for proxy in proxies]
-                    proxies = [proxy+'\n' for proxy in proxies]
-                top_amount = len(proxies) - 1
-
-                lines.insert(index+1, f'合并节点数量: `{top_amount}`\n')
-
-                index += 5
-                for i in proxies:
-                    index += 1
-                    lines.insert(index, i)
-                """
-                break
-        # 节点来源打印
-        for index in range(len(lines)):
-            if lines[index] == '### node sources\n':
-                # 清除旧内容
-                while lines[index+1] != '\n':
-                    lines.pop(index+1)
-
-                for i in thanks:
-                    index += 1
-                    lines.insert(index, i)
-                break
-
-        # 写入 README 内容
-        with open(readme_file, 'w', encoding='utf-8') as f:
-            data = ''.join(lines)
-            print('Finish!\n')
-            f.write(data)
 
 
 if __name__ == '__main__':
@@ -396,4 +272,3 @@ if __name__ == '__main__':
     # eject sub converting using local method and using sub convertor instead (only yaml available there is no
     # base64 or mixed type proxy in this method and other types will be handle using other workflows)
     subs.get_subs_v3(list(filter(lambda x: x['id'] != 5, sub_list)))
-    sub_merge.readme_update(readme, sub_list)
