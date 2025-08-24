@@ -75,5 +75,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "Triggering the tester.yml workflow on the master branch..."
-          gh workflow run tester.yml --ref master
+          echo "Triggering the tester.yml workflow on the dev01 branch..."
+          gh workflow run tester.yml --ref dev01
