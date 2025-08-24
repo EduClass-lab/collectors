@@ -24,7 +24,7 @@ TOP_POOL_SIZE = 1000
 # --- THIS IS THE FIX: Define default and country-specific limits ---
 NODES_PER_COUNTRY = 1  # Default for all countries
 COUNTRY_NODE_LIMITS = {
-    'TR': 4  # Special limit for Turkey
+    'TR': 20  # Special limit for Turkey
 }
 # --- END OF FIX ---
 
