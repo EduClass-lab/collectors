@@ -57,7 +57,6 @@ jobs:
           git pull origin ${{ github.ref_name }}
           git add ./sub
           git add ./utils/Country.mmdb
-          git add README.md
           # The checkout command is removed as it's redundant. The push action below handles the branch.
           if ! git diff-index --quiet HEAD; then
             git commit -m "✔️ $(date '+%Y-%m-%d %H:%M:%S') Collected"
