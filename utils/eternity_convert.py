@@ -12,7 +12,6 @@ from list_merge import sub_merge
 Eterniy_base_file = './EternityBase'
 Eterniy_file = './Eternity' # This is now only used for the backup function
 Eternity_yml_file = './Eternity.yml'
-readme = './README.md'
 log_file = './LogInfo.txt'
 
 provider_path = './update/provider/'
@@ -123,5 +122,3 @@ if __name__ == '__main__':
     sub_merge.geoip_update(
         'https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb')
     eternity_convert(config_file, Eternity_yml_file)
-    backup(Eterniy_file)
-    sub_merge.readme_update(readme, sub_merge.read_list(sub_list_json))
