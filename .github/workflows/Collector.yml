@@ -54,7 +54,7 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git pull origin master
+          git pull origin ${{ github.ref_name }}
           git add ./sub
           git add ./utils/Country.mmdb
           git add README.md
@@ -68,7 +68,7 @@ jobs:
       - name: Push Collection Changes
         uses: ad-m/github-push-action@master
         with:
-          branch: master
+          branch: ${{ github.ref_name }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Trigger Tester Workflow
