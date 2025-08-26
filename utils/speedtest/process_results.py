@@ -43,7 +43,7 @@ def backup(data):
 
   try:  
     with open(file_path, "w", encoding="utf-8") as f:
-      f.write(data)
+      f.write('\n'.join(data))
   except OSError:
     print("Error writing backup file")
       
@@ -273,4 +273,4 @@ def process_and_save_results():
 
 if __name__ == '__main__':
     process_and_save_results()
-    backup(ETERNITY_OUTPUT_FILE)
+    backup(eternity_links)
