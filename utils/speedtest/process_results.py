@@ -264,13 +264,16 @@ def process_and_save_results():
 
     eternity_nodes.sort(key=lambda x: x['speed'], reverse=True)
 
+    print(eternity_nodes)
     eternity_links = [p['link'] for p in eternity_nodes]
     with open(ETERNITY_OUTPUT_FILE, 'w', encoding='utf-8') as f: f.write('\n'.join(eternity_links))
     print(f"✅ Saved 'Eternity' list of {len(eternity_links)} proxies to {ETERNITY_OUTPUT_FILE}.")
 
     with open(ETERNITY_OUTPUT_BASE64_FILE, 'w', encoding='utf-8') as f: f.write(base64.b64encode('\n'.join(eternity_links).encode()).decode())
     print(f"✅ Saved Base64 encoded 'Eternity' list to {ETERNITY_OUTPUT_BASE64_FILE}.")
-
+    backup(eternity_links)
+    print(f"✅ Saved 'Backup' list of {len(eternity_links)} proxies.")
+    
 if __name__ == '__main__':
     process_and_save_results()
-    backup(eternity_links)
+    
