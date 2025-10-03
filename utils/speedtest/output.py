@@ -56,7 +56,7 @@ def reconstruct_link(node):
 def output_geo_balanced(raw_nodes, total_proxies_in_final_file):
     # --- START: New code block to add ---
     # Filter out nodes that failed the test (speed is 0 or key is missing)
-    successful_nodes = [node for node in raw_nodes if node.get("speed", 0) > 0 or node.get("delay", 0) > 0]
+    successful_nodes = [node for node in raw_nodes if node.get("speed", 0) > 20 or node.get("delay", 0) > 0]
 
     if not successful_nodes:
         print("All node tests failed. No successful nodes to process. Exiting.")
@@ -82,10 +82,10 @@ def output_geo_balanced(raw_nodes, total_proxies_in_final_file):
         # Map singtools keys to the format this script expects
         new_node = {
             "id": node.get("id", ""),
-            "remarks": node.get("name", ""),
+            "avg_speed": node.get("speed", 0)/(1024*1024), # speed is in MB/s
+            "remarks": (node.get("name", ""),'|',node.get("speed", 0)/(1024*1024)),
             "protocol": node.get("type", ""),
             "ping": node.get("delay", 0),
-            "avg_speed": node.get("speed", 0), # speed is in B/s
             "max_speed": node.get("speed", 0), # singtools doesn't provide max, use avg
             "server_ip": node.get("ip", ""),
             "link": reconstruct_link(node) # Reconstruct the link
