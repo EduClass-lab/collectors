@@ -11,7 +11,7 @@ from datetime import datetime
 META_FILE = 'meta.json'
 TAG_MAP_FILE = 'tag_map.json'
 GEOIP_DB = 'utils/GeoLite2-Country.mmdb'
-BLOCKED_COUNTRIES = ['IR', 'CN']
+BLOCKED_COUNTRIES = []
 
 # Output files
 FULL_OUTPUT_FILE = 'full.txt'
@@ -24,9 +24,7 @@ ETERNITY_LIST_SIZE = 165
 TOP_POOL_SIZE = 1000
 # --- THIS IS THE FIX: Define default and country-specific limits ---
 NODES_PER_COUNTRY = 1  # Default for all countries
-COUNTRY_NODE_LIMITS = {
-    'TR': 20  # Special limit for Turkey
-}
+COUNTRY_NODE_LIMITS = {}
 # --- END OF FIX ---
 def backup(data):
   update_path = './update'
@@ -196,7 +194,7 @@ def process_and_save_results():
                     processed_nodes.append({
                         'link': link, 'ip': ip_address,
                         'tag': tag_map.get(node.get('tag'), node.get('tag', 'N/A')),
-                        'speed': node.get('avg_speed', 0), 'country': country_code
+                        'speed': node.get('avg_speed', 0)/(1024*1024) , 'country': country_code
                     })
     else:
         print("Warning: GeoIP DB not found. Skipping country lookup and filtering.")
@@ -205,7 +203,7 @@ def process_and_save_results():
             if link:
                 processed_nodes.append({
                     'link': link, 'ip': '', 'tag': tag_map.get(node.get('tag'), node.get('tag', 'N/A')),
-                    'speed': node.get('avg_speed', 0), 'country': 'XX'
+                    'speed': node.get('avg_speed', 0)/(1024*1024) , 'country': 'XX'
                 })
 
     initial_count = len(processed_nodes)
