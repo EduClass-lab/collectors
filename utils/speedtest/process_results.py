@@ -168,7 +168,7 @@ def process_and_save_results():
         print(f"Warning: Tag map file '{TAG_MAP_FILE}' not found. Final links may have generic names.")
         tag_map = {}
 
-    working_nodes = [node for node in nodes if node.get('avg_speed', 0) > 0]
+    working_nodes = [node for node in nodes if node.get('avg_speed', 0) > 20971520]
     if not working_nodes:
         print("No working nodes found with speed > 0. Output files will be empty.")
         for f in [FULL_OUTPUT_FILE, FULL_OUTPUT_BASE64_FILE, ETERNITY_OUTPUT_FILE, ETERNITY_OUTPUT_BASE64_FILE]: open(f, 'w').close()
