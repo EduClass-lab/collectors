@@ -5,18 +5,34 @@
   "ntp": {},
   "outbounds": [
     {
-      "method": "chacha20-ietf-poly1305",
-      "password": "hbGrpfvNrJsUmKmPbR3iY2",
-      "server": "tinkered-pennies-puppies.freesocks.work",
-      "server_port": 443,
-      "tag": "proxy-40",
+      "security": "auto",
+      "server": "82.198.246.250",
+      "server_port": 180,
+      "tag": "proxy-49",
+      "type": "vmess",
+      "uuid": "d13fc2f5-3e05-4795-81eb-44143a09e552"
+    },
+    {
+      "security": "auto",
+      "server": "82.198.246.46",
+      "server_port": 180,
+      "tag": "proxy-51",
+      "type": "vmess",
+      "uuid": "d13fc2f5-3e05-4795-81eb-44143a09e552"
+    },
+    {
+      "method": "aes-256-gcm",
+      "password": "ZfbPFDdeBj0B1Txs",
+      "server": "154.53.60.212",
+      "server_port": 80,
+      "tag": "proxy-47",
       "type": "shadowsocks"
     },
     {
       "security": "auto",
       "server": "47.90.244.153",
       "server_port": 8443,
-      "tag": "proxy-38",
+      "tag": "proxy-60",
       "transport": {
         "headers": {
           "Host": "47.90.244.153"
@@ -28,179 +44,78 @@
       "uuid": "65e2a985-ad20-4486-a7ec-b67b20ee56af"
     },
     {
-      "method": "aes-256-gcm",
-      "password": "14CLBaFBqwqxBJy6",
-      "server": "66.94.125.178",
-      "server_port": 80,
-      "tag": "proxy-50",
-      "type": "shadowsocks"
+      "security": "auto",
+      "server": "216.167.32.53",
+      "server_port": 3438,
+      "tag": "proxy-58",
+      "transport": {
+        "headers": {
+          "Host": "216.167.32.53"
+        },
+        "path": "/",
+        "type": "ws"
+      },
+      "type": "vmess",
+      "uuid": "a77d8ea6-1e1b-4825-a71c-41262f19e3fd"
     },
     {
       "method": "chacha20-ietf-poly1305",
       "password": "7a106afc33eaa261",
       "server": "148.113.139.160",
       "server_port": 46534,
-      "tag": "proxy-42",
+      "tag": "proxy-53",
       "type": "shadowsocks"
-    },
-    {
-      "method": "aes-256-gcm",
-      "password": "ZfbPFDdeBj0B1Txs",
-      "server": "154.53.60.212",
-      "server_port": 80,
-      "tag": "proxy-51",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "G5p6ww4o67HB",
-      "server": "108.181.0.177",
-      "server_port": 8388,
-      "tag": "proxy-44",
-      "type": "shadowsocks"
-    },
-    {
-      "security": "auto",
-      "server": "82.198.246.97",
-      "server_port": 180,
-      "tag": "proxy-46",
-      "type": "vmess",
-      "uuid": "d13fc2f5-3e05-4795-81eb-44143a09e552"
-    },
-    {
-      "security": "auto",
-      "server": "165.140.216.141",
-      "server_port": 443,
-      "tag": "proxy-54",
-      "type": "vmess",
-      "uuid": "e7d72a8d-26f2-4b54-b366-0c43e0bcba7d"
-    },
-    {
-      "security": "auto",
-      "server": "66.163.117.58",
-      "server_port": 22324,
-      "tag": "proxy-59",
-      "type": "vmess",
-      "uuid": "04621bae-ab36-11ec-b909-0242ac120002"
     },
     {
       "method": "aes-256-gcm",
       "password": "umWwoQJEJGf74SLe",
       "server": "149.102.149.207",
       "server_port": 443,
-      "tag": "proxy-56",
+      "tag": "proxy-64",
       "type": "shadowsocks"
     },
     {
+      "security": "auto",
+      "server": "usaapp1.jisuyun.top",
+      "server_port": 2053,
+      "tag": "proxy-69",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "usaapp1.jisuyun.top"
+      },
+      "transport": {
+        "headers": {
+          "Host": "usaapp1.jisuyun.top"
+        },
+        "path": "/usavm",
+        "type": "ws"
+      },
+      "type": "vmess",
+      "uuid": "4b80aa86-4354-40bb-d2a3-47126cff0bea"
+    },
+    {
       "method": "chacha20-ietf-poly1305",
-      "password": "74918bc801d53a4b",
-      "server": "57.130.28.148",
-      "server_port": 11201,
-      "tag": "proxy-58",
+      "password": "1kVr0KATIJI7mwOF",
+      "server": "admin.c1.havij.co",
+      "server_port": 443,
+      "tag": "proxy-70",
       "type": "shadowsocks"
     },
     {
       "security": "auto",
       "server": "94.232.247.165",
       "server_port": 45653,
-      "tag": "proxy-61",
+      "tag": "proxy-72",
       "type": "vmess",
       "uuid": "9e91d19a-c73f-4276-adbc-b337c374259c"
     },
     {
       "method": "chacha20-ietf-poly1305",
-      "password": "W74XFALLLuw6m5IA",
-      "server": "series-a2.samanehha.co",
-      "server_port": 443,
-      "tag": "proxy-60",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "W74XFALLLuw6m5IA",
-      "server": "series-a1.samanehha.co",
-      "server_port": 443,
-      "tag": "proxy-63",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "PDNcrHbGmb5u76Og8NatjZ",
-      "server": "185.117.91.27",
-      "server_port": 21836,
-      "tag": "proxy-70",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "85d3d8ccba287d3e",
-      "server": "135.125.245.131",
-      "server_port": 20939,
-      "tag": "proxy-72",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "10f90af92b6c1a74",
-      "server": "141.95.109.94",
+      "password": "94aae0510188e8c5",
+      "server": "141.95.106.127",
       "server_port": 11201,
-      "tag": "proxy-69",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "oZIoA69Q8yhcQV8ka3Pa3A",
-      "server": "82.38.31.82",
-      "server_port": 8080,
-      "tag": "proxy-74",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "f54cdee10f8b25ce",
-      "server": "57.129.95.38",
-      "server_port": 11201,
-      "tag": "proxy-71",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "oZIoA69Q8yhcQV8ka3Pa3A",
-      "server": "82.38.31.35",
-      "server_port": 8080,
-      "tag": "proxy-81",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "oZIoA69Q8yhcQV8ka3Pa3A",
-      "server": "193.29.139.151",
-      "server_port": 8080,
-      "tag": "proxy-85",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "k1dBOmOB4oqi7Ump37a1bQ",
-      "server": "82.38.31.210",
-      "server_port": 8080,
-      "tag": "proxy-86",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "k1dBOmOB4oqi7Ump37a1bQ",
-      "server": "82.38.31.176",
-      "server_port": 8080,
-      "tag": "proxy-89",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "k1dBOmOB4oqi7Ump37a1bQ",
-      "server": "82.38.31.205",
-      "server_port": 8080,
-      "tag": "proxy-92",
+      "tag": "proxy-73",
       "type": "shadowsocks"
     },
     {
@@ -208,47 +123,127 @@
       "password": "QCXDxuDlTTMD7jtgHUjIoj",
       "server": "193.29.139.199",
       "server_port": 8080,
-      "tag": "proxy-93",
+      "tag": "proxy-76",
       "type": "shadowsocks"
     },
     {
       "method": "chacha20-ietf-poly1305",
-      "password": "k1dBOmOB4oqi7Ump37a1bQ",
-      "server": "82.38.31.202",
-      "server_port": 8080,
-      "tag": "proxy-95",
+      "password": "6c815bb84c781da5",
+      "server": "51.75.168.50",
+      "server_port": 13030,
+      "tag": "proxy-77",
+      "type": "shadowsocks"
+    },
+    {
+      "security": "auto",
+      "server": "66.163.117.58",
+      "server_port": 22324,
+      "tag": "proxy-81",
+      "type": "vmess",
+      "uuid": "04621bae-ab36-11ec-b909-0242ac120002"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "f54cdee10f8b25ce",
+      "server": "57.129.95.38",
+      "server_port": 11201,
+      "tag": "proxy-79",
       "type": "shadowsocks"
     },
     {
       "method": "chacha20-ietf-poly1305",
-      "password": "k1dBOmOB4oqi7Ump37a1bQ",
-      "server": "82.38.31.199",
-      "server_port": 8080,
-      "tag": "proxy-96",
+      "password": "85d3d8ccba287d3e",
+      "server": "135.125.245.131",
+      "server_port": 20939,
+      "tag": "proxy-83",
       "type": "shadowsocks"
     },
     {
       "method": "chacha20-ietf-poly1305",
-      "password": "QCXDxuDlTTMD7jtgHUjIoj",
-      "server": "193.29.139.217",
-      "server_port": 8080,
-      "tag": "proxy-98",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "k1dBOmOB4oqi7Ump37a1bQ",
-      "server": "82.38.31.184",
+      "password": "oZIoA69Q8yhcQV8ka3Pa3A",
+      "server": "82.38.31.61",
       "server_port": 8080,
       "tag": "proxy-90",
       "type": "shadowsocks"
     },
     {
       "method": "chacha20-ietf-poly1305",
-      "password": "k1dBOmOB4oqi7Ump37a1bQ",
-      "server": "82.38.31.194",
+      "password": "oZIoA69Q8yhcQV8ka3Pa3A",
+      "server": "82.38.31.99",
       "server_port": 8080,
-      "tag": "proxy-112",
+      "tag": "proxy-96",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "10f90af92b6c1a74",
+      "server": "141.95.109.94",
+      "server_port": 11201,
+      "tag": "proxy-97",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "4a2rfixophdjffa8KVA4Aa",
+      "server": "193.29.139.206",
+      "server_port": 8080,
+      "tag": "proxy-101",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "cvII85TrW6n0OGyfpHVS1u",
+      "server": "193.29.139.179",
+      "server_port": 8080,
+      "tag": "proxy-104",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "k1dBOmOB4oqi7Ump37a1bQ",
+      "server": "82.38.31.189",
+      "server_port": 8080,
+      "tag": "proxy-107",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "oZIoA69Q8yhcQV8ka3Pa3A",
+      "server": "193.29.139.204",
+      "server_port": 8080,
+      "tag": "proxy-110",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "k1dBOmOB4oqi7Ump37a1bQ",
+      "server": "82.38.31.217",
+      "server_port": 8080,
+      "tag": "proxy-109",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "k1dBOmOB4oqi7Ump37a1bQ",
+      "server": "82.38.31.218",
+      "server_port": 8080,
+      "tag": "proxy-119",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "k1dBOmOB4oqi7Ump37a1bQ",
+      "server": "82.38.31.187",
+      "server_port": 8080,
+      "tag": "proxy-120",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "X6btbRvJCo3uTQ--yaaT8Mvh0CgqhYTL",
+      "server": "95.85.239.225",
+      "server_port": 8388,
+      "tag": "proxy-125",
       "type": "shadowsocks"
     },
     {
@@ -256,77 +251,53 @@
       "password": "yKVMoB3AwiTEznpnoq2FYR",
       "server": "193.47.60.186",
       "server_port": 28687,
-      "tag": "proxy-116",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=",
-      "server": "38.54.57.90",
-      "server_port": 990,
-      "tag": "proxy-123",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "5b978047b47f7eab",
-      "server": "154.205.154.184",
-      "server_port": 11201,
-      "tag": "proxy-127",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "eafad96826c79ddd",
-      "server": "163.171.137.76",
-      "server_port": 47394,
-      "tag": "proxy-122",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=",
-      "server": "171.22.254.129",
-      "server_port": 990,
-      "tag": "proxy-129",
+      "tag": "proxy-126",
       "type": "shadowsocks"
     },
     {
       "security": "auto",
-      "server": "45.89.52.207",
-      "server_port": 39651,
-      "tag": "proxy-132",
+      "server": "165.154.195.38",
+      "server_port": 35034,
+      "tag": "proxy-135",
       "type": "vmess",
-      "uuid": "ac4c12c5-45f2-4398-a718-9983941ede2b"
+      "uuid": "959a8caf-4cea-43d0-a548-3628e7ddfafc"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "cb955c8530320120",
+      "server": "38.54.29.57",
+      "server_port": 11201,
+      "tag": "proxy-141",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=",
+      "server": "38.54.107.101",
+      "server_port": 990,
+      "tag": "proxy-134",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "QFWzCw2uX9B9i6qAYeFBIE",
+      "server": "154.46.31.106",
+      "server_port": 443,
+      "tag": "proxy-144",
+      "type": "shadowsocks"
     },
     {
       "method": "chacha20-ietf-poly1305",
       "password": "ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=",
       "server": "45.154.204.7",
       "server_port": 990,
-      "tag": "proxy-147",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "7e731ec3-f8e1-43f6-92cf-3978d14705c4",
-      "server": "r3mrcg001287h3p.cybervena.com",
-      "server_port": 50099,
-      "tag": "proxy-169",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "7e731ec3-f8e1-43f6-92cf-3978d14705c4",
-      "server": "r3mrcg001269pz2.cybervena.com",
-      "server_port": 50099,
-      "tag": "proxy-172",
+      "tag": "proxy-145",
       "type": "shadowsocks"
     },
     {
       "server": "v1.dabache.top",
       "server_port": 80,
-      "tag": "proxy-212",
+      "tag": "proxy-184",
       "transport": {
         "headers": {
           "Host": "vip.yaml7.ggff.net"
@@ -339,235 +310,25 @@
     },
     {
       "method": "chacha20-ietf-poly1305",
-      "password": "QFWzCw2uX9B9i6qAYeFBIE",
-      "server": "154.46.31.106",
-      "server_port": 443,
-      "tag": "proxy-131",
-      "type": "shadowsocks"
-    },
-    {
-      "server": "creativecommons.org",
-      "server_port": 2052,
-      "tag": "proxy-340",
-      "transport": {
-        "headers": {
-          "Host": "index.0x14.workers.dev"
-        },
-        "path": "/assets",
-        "type": "ws"
-      },
-      "type": "vless",
-      "uuid": "d342d11e-d424-4583-b36e-524ab1f0afa4"
-    },
-    {
-      "server": "www.visa.com.sg",
-      "server_port": 2052,
-      "tag": "proxy-318",
-      "transport": {
-        "headers": {
-          "Host": "chosenflyesqt-q3y28ipf-v3.chosen-fly-esqt.workers.dev"
-        },
-        "path": "/",
-        "type": "ws"
-      },
-      "type": "vless",
-      "uuid": "363a6072-05d7-48d5-8f19-312b05fdd9cd"
-    },
-    {
-      "server": "creativecommons.org",
-      "server_port": 2086,
-      "tag": "proxy-448",
-      "transport": {
-        "headers": {
-          "Host": "index.0x15.workers.dev"
-        },
-        "path": "/PdgTMW8NBNZYo6L23v",
-        "type": "ws"
-      },
-      "type": "vless",
-      "uuid": "d342d11e-d424-4583-b36e-524ab1f0afa4"
-    },
-    {
-      "method": "aes-256-gcm",
-      "password": "8t2xeemUtyui4zAv",
-      "server": "194.233.94.119",
-      "server_port": 80,
-      "tag": "proxy-332",
-      "type": "shadowsocks"
-    },
-    {
-      "server": "002.inc-electrocell-001-002.workers.dev",
-      "server_port": 443,
-      "tag": "proxy-525",
-      "tls": {
-        "enabled": true,
-        "insecure": true,
-        "server_name": "002.inc-electrocell-001-002.workers.dev"
-      },
-      "transport": {
-        "headers": {
-          "Host": "002.Inc-ElectROcElL-001-002.WoRKERS.DEV"
-        },
-        "path": "/eyJqdW5rIjoib0RnakxTZUZvOSIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
-        "type": "ws"
-      },
-      "type": "vless",
-      "uuid": "36a857e4-f3d4-43aa-8b90-d7da849da989"
-    },
-    {
-      "server": "africa.visa.com",
-      "server_port": 8880,
-      "tag": "proxy-468",
-      "transport": {
-        "headers": {
-          "Host": "wetfleagidc-8tsbi8xd-v3.wet-flea-gidc.workers.dev"
-        },
-        "path": "/?ed=2560Join---V2rayBaaz---@V2rayBaaz---@V2rayBaaz---@V2rayBaaz---@V2rayBaaz---@V2rayBaaz---@V2rayBaaz---@V2rayBaaz---@V2rayBaaz---@V2rayBaaz---@V2rayBaaz---@V2rayBaaz",
-        "type": "ws"
-      },
-      "type": "vless",
-      "uuid": "5b002005-7fb1-413e-8cbd-08e50c87c2ea"
-    },
-    {
-      "server": "www.visa.com.sg",
-      "server_port": 8880,
-      "tag": "proxy-518",
-      "transport": {
-        "headers": {
-          "Host": "square-frost-8d11.9660004.workers.dev"
-        },
-        "path": "/",
-        "type": "ws"
-      },
-      "type": "vless",
-      "uuid": "78c5b6bd-1cb6-463c-bcba-9f17ef70c85b"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=",
-      "server": "185.93.173.60",
-      "server_port": 990,
-      "tag": "proxy-528",
+      "password": "ca5a5efae00a832b",
+      "server": "112.197.26.106",
+      "server_port": 45313,
+      "tag": "proxy-442",
       "type": "shadowsocks"
     },
     {
       "method": "aes-256-gcm",
-      "password": "8JCsPssfgS8tiRwiMlhARg==",
-      "server": "57.128.214.100",
-      "server_port": 12000,
-      "tag": "proxy-531",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "a8201bbd740420bb",
-      "server": "213.156.137.142",
-      "server_port": 43659,
-      "tag": "proxy-523",
-      "type": "shadowsocks"
-    },
-    {
-      "security": "auto",
-      "server": "v12.hdacd.com",
-      "server_port": 30812,
-      "tag": "proxy-498",
-      "type": "vmess",
-      "uuid": "cbb3f877-d1fb-344c-87a9-d153bffd5484"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "7yjfj65mySQ2wnOkB6El3D",
-      "server": "150.95.85.12",
-      "server_port": 22867,
-      "tag": "proxy-551",
-      "type": "shadowsocks"
-    },
-    {
-      "security": "auto",
-      "server": "efan.dnsefan04881.com",
-      "server_port": 7754,
-      "tag": "proxy-558",
-      "type": "vmess",
-      "uuid": "009e558d-3cf4-49d8-b5e4-82c9e14fe1a4"
-    },
-    {
-      "security": "auto",
-      "server": "47.243.135.74",
-      "server_port": 55185,
-      "tag": "proxy-568",
-      "transport": {
-        "headers": {
-          "Host": "47.243.135.74"
-        },
-        "path": "/Notif_Chat",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "1375985e-334a-4c25-8f64-52a182bc8037"
-    },
-    {
-      "security": "auto",
-      "server": "152.67.8.205",
-      "server_port": 80,
-      "tag": "proxy-566",
-      "transport": {
-        "headers": {
-          "Host": "152.67.8.205"
-        },
-        "path": "/",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "9db4c708-aef8-4359-821b-38e47990be0d"
-    },
-    {
-      "server": "93.185.166.71",
-      "server_port": 1443,
-      "tag": "proxy-612",
-      "tls": {
-        "enabled": true,
-        "insecure": true,
-        "server_name": "93.185.166.71"
-      },
-      "type": "vless",
-      "uuid": "0cf4a308-1fe7-42e2-bc41-f1b5877f489e"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=",
-      "server": "38.54.107.101",
-      "server_port": 990,
-      "tag": "proxy-600",
-      "type": "shadowsocks"
-    },
-    {
-      "security": "auto",
-      "server": "47.250.153.136",
-      "server_port": 26181,
-      "tag": "proxy-613",
-      "transport": {
-        "headers": {
-          "Host": "47.250.153.136"
-        },
-        "path": "/",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "7249c3be-85ad-46fb-ab98-c4a07f4a724d"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "9tqhMdIrTkgQ46PvhyAtMH",
-      "server": "switcher-nick-croquet.freesocks.work",
-      "server_port": 443,
-      "tag": "proxy-665",
+      "password": "lGqs95QkFHo2NV",
+      "server": "38.180.2.141",
+      "server_port": 5499,
+      "tag": "proxy-479",
       "type": "shadowsocks"
     },
     {
       "security": "auto",
       "server": "chuncheon03.zgjok.com",
       "server_port": 443,
-      "tag": "proxy-894",
+      "tag": "proxy-484",
       "tls": {
         "enabled": true,
         "insecure": true,
@@ -585,32 +346,157 @@
     },
     {
       "security": "auto",
-      "server": "v30.hdacd.com",
-      "server_port": 30830,
-      "tag": "proxy-906",
+      "server": "61.245.11.60",
+      "server_port": 80,
+      "tag": "proxy-459",
+      "transport": {
+        "headers": {
+          "Host": "61.245.11.60"
+        },
+        "path": "/vmess/",
+        "type": "ws"
+      },
       "type": "vmess",
-      "uuid": "cbb3f877-d1fb-344c-87a9-d153bffd5484"
+      "uuid": "a3e3a710-79f8-4ae0-b83c-607aab40d197"
+    },
+    {
+      "server": "nl-90w-c.southnetworks.cloud",
+      "server_port": 80,
+      "tag": "proxy-527",
+      "transport": {
+        "headers": {
+          "Host": "nl-90w-c.southnetworks.cloud"
+        },
+        "path": "/getWorkerUpdates",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "e08f1ad7-0c60-446d-baec-08b3b69bb3d0"
+    },
+    {
+      "server": "nnet.online",
+      "server_port": 80,
+      "tag": "proxy-525",
+      "transport": {
+        "headers": {
+          "Host": "nnet.online"
+        },
+        "path": "/vless-ntls",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "1007b7c2-2170-4ba4-a68d-ec31fbb4bf74"
     },
     {
       "security": "auto",
-      "server": "103.229.124.3",
-      "server_port": 20521,
-      "tag": "proxy-892",
+      "server": "n1753101277.4u9ma.icu",
+      "server_port": 443,
+      "tag": "proxy-799",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "n1753101277.4u9ma.icu"
+      },
       "transport": {
         "headers": {
-          "Host": "103.229.124.3"
+          "Host": "n1753101277.4u9ma.icu"
         },
         "path": "/",
         "type": "ws"
       },
       "type": "vmess",
-      "uuid": "292e9c90-25b3-4ff5-b98a-9ef5877714ab"
+      "uuid": "6ea48dfe-7de2-45dc-9267-d4d9effad9fc"
+    },
+    {
+      "server": "pq-albania1.09vpn.com",
+      "server_port": 80,
+      "tag": "proxy-826",
+      "transport": {
+        "headers": {
+          "Host": "pq-albania1.09vpn.com"
+        },
+        "path": "/vless/",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "b4819c49-6c7e-4b57-9b9b-c73031e1de11"
+    },
+    {
+      "password": "UNWA6USASAb6=uAAZeZMFd+2uKB4.d5KOm",
+      "server": "166.88.197.60",
+      "server_port": 26650,
+      "tag": "proxy-847",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "sea9.firewallcontract.click"
+      },
+      "type": "trojan"
+    },
+    {
+      "server": "144.24.126.26",
+      "server_port": 443,
+      "tag": "proxy-848",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "144.24.126.26"
+      },
+      "transport": {
+        "headers": {
+          "Host": "144.24.126.26"
+        },
+        "path": "/vless",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "1027b850-de79-4a94-b337-eccdac28e141"
+    },
+    {
+      "method": "aes-256-gcm",
+      "password": "FoOiGlkAA9yPEGP",
+      "server": "38.180.216.114",
+      "server_port": 7307,
+      "tag": "proxy-824",
+      "type": "shadowsocks"
+    },
+    {
+      "security": "auto",
+      "server": "158.51.121.63",
+      "server_port": 443,
+      "tag": "proxy-1157",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "158.51.121.63"
+      },
+      "transport": {
+        "headers": {
+          "Host": "seribus.org"
+        },
+        "path": "linkvws",
+        "type": "ws"
+      },
+      "type": "vmess",
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581"
+    },
+    {
+      "password": "BxceQaOe",
+      "server": "58.152.25.253",
+      "server_port": 443,
+      "tag": "proxy-1151",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "58.152.25.253"
+      },
+      "type": "trojan"
     },
     {
       "security": "auto",
       "server": "23.162.200.227",
       "server_port": 443,
-      "tag": "proxy-1279",
+      "tag": "proxy-1213",
       "tls": {
         "enabled": true,
         "insecure": true,
@@ -630,7 +516,7 @@
       "security": "auto",
       "server": "134.195.198.147",
       "server_port": 443,
-      "tag": "proxy-1287",
+      "tag": "proxy-1221",
       "tls": {
         "enabled": true,
         "insecure": true,
@@ -647,34 +533,26 @@
       "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581"
     },
     {
-      "password": "MeaDiUmPlkWbZJ2BON8tz",
-      "server": "78.159.131.12",
-      "server_port": 28259,
-      "tag": "proxy-1321",
-      "tls": {
-        "enabled": true,
-        "insecure": true,
-        "server_name": "78.159.131.12"
-      },
-      "type": "trojan"
+      "method": "chacha20-ietf-poly1305",
+      "password": "ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=",
+      "server": "147.78.1.230",
+      "server_port": 990,
+      "tag": "proxy-1241",
+      "type": "shadowsocks"
     },
     {
-      "password": "a5inYFE=JGV89+hjxIqgDp1tcWBd6",
-      "server": "80.173.230.196",
-      "server_port": 26279,
-      "tag": "proxy-1322",
-      "tls": {
-        "enabled": true,
-        "insecure": true,
-        "server_name": "80.173.230.196"
-      },
-      "type": "trojan"
+      "method": "chacha20-ietf-poly1305",
+      "password": "ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=",
+      "server": "37.143.130.203",
+      "server_port": 990,
+      "tag": "proxy-1244",
+      "type": "shadowsocks"
     },
     {
-      "password": "telegram-id-privatevpns",
-      "server": "13.36.92.214",
-      "server_port": 22222,
-      "tag": "proxy-1328",
+      "password": "telegram-id-directvpn",
+      "server": "51.44.56.66",
+      "server_port": 22223,
+      "tag": "proxy-1278",
       "tls": {
         "enabled": true,
         "insecure": true,
@@ -684,9 +562,9 @@
     },
     {
       "password": "telegram-id-privatevpns",
-      "server": "63.184.25.161",
+      "server": "3.65.163.13",
       "server_port": 22222,
-      "tag": "proxy-1346",
+      "tag": "proxy-1289",
       "tls": {
         "enabled": true,
         "insecure": true,
@@ -695,17 +573,17 @@
       "type": "trojan"
     },
     {
-      "server": "13.36.92.214",
+      "server": "51.44.56.66",
       "server_port": 22224,
-      "tag": "proxy-1349",
+      "tag": "proxy-1301",
       "tls": {
         "enabled": true,
         "insecure": true,
-        "server_name": "13.36.92.214"
+        "server_name": "51.44.56.66"
       },
       "transport": {
         "headers": {
-          "Host": "13.36.92.214"
+          "Host": "51.44.56.66"
         },
         "path": "/telegram-channel-vlessconfig",
         "type": "ws"
@@ -714,11 +592,23 @@
       "uuid": "05519058-d2ac-4f28-9e4a-2b2a1386749e"
     },
     {
-      "method": "aes-256-cfb",
-      "password": "qwerREWQ@@",
-      "server": "218.237.185.230",
-      "server_port": 4652,
-      "tag": "proxy-1516",
+      "password": "MeaDiUmPlkWbZJ2BON8tz",
+      "server": "78.159.131.12",
+      "server_port": 28259,
+      "tag": "proxy-1273",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "78.159.131.12"
+      },
+      "type": "trojan"
+    },
+    {
+      "method": "aes-128-gcm",
+      "password": "shadowsocks",
+      "server": "141.98.101.182",
+      "server_port": 443,
+      "tag": "proxy-1451",
       "type": "shadowsocks"
     },
     {
@@ -726,46 +616,46 @@
       "password": "ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=",
       "server": "79.127.200.169",
       "server_port": 990,
-      "tag": "proxy-1668",
+      "tag": "proxy-1669",
       "type": "shadowsocks"
     },
     {
-      "method": "aes-128-gcm",
-      "password": "shadowsocks",
-      "server": "156.146.38.167",
-      "server_port": 443,
-      "tag": "proxy-1672",
+      "method": "rc4-md5",
+      "password": "14fFPrbezE3HDZzsMOr6",
+      "server": "137.184.174.93",
+      "server_port": 8080,
+      "tag": "proxy-1671",
       "type": "shadowsocks"
     },
     {
-      "method": "aes-128-gcm",
-      "password": "shadowsocks",
-      "server": "156.146.38.169",
-      "server_port": 443,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=",
+      "server": "38.165.231.25",
+      "server_port": 990,
       "tag": "proxy-1673",
       "type": "shadowsocks"
     },
     {
-      "method": "aes-128-gcm",
-      "password": "shadowsocks",
-      "server": "173.244.56.6",
-      "server_port": 443,
-      "tag": "proxy-1680",
+      "method": "chacha20-ietf-poly1305",
+      "password": "ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=",
+      "server": "138.186.142.81",
+      "server_port": 990,
+      "tag": "proxy-1683",
       "type": "shadowsocks"
     },
     {
-      "method": "aes-256-cfb",
-      "password": "f8f7aCzcPKbsF8p3",
-      "server": "104.192.226.106",
-      "server_port": 989,
-      "tag": "proxy-1678",
+      "method": "chacha20-ietf-poly1305",
+      "password": "ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=",
+      "server": "138.186.142.80",
+      "server_port": 990,
+      "tag": "proxy-1684",
       "type": "shadowsocks"
     },
     {
-      "method": "aes-128-gcm",
-      "password": "shadowsocks",
-      "server": "141.98.101.178",
-      "server_port": 443,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=",
+      "server": "46.183.217.204",
+      "server_port": 990,
       "tag": "proxy-1689",
       "type": "shadowsocks"
     },
@@ -774,7 +664,15 @@
       "password": "f8f7aCzcPKbsF8p3",
       "server": "171.22.254.17",
       "server_port": 989,
-      "tag": "proxy-1685",
+      "tag": "proxy-1687",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "aes-128-gcm",
+      "password": "shadowsocks",
+      "server": "149.22.87.204",
+      "server_port": 443,
+      "tag": "proxy-1696",
       "type": "shadowsocks"
     },
     {
@@ -782,95 +680,47 @@
       "password": "ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=",
       "server": "156.38.168.58",
       "server_port": 990,
-      "tag": "proxy-1686",
+      "tag": "proxy-1688",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "7e731ec3-f8e1-43f6-92cf-3978d14705c4",
+      "server": "r3mrcg007117fb8.cybervena.com",
+      "server_port": 50099,
+      "tag": "proxy-1699",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "7e731ec3-f8e1-43f6-92cf-3978d14705c4",
+      "server": "r3mrcg007147vhp.cybervena.com",
+      "server_port": 50099,
+      "tag": "proxy-1701",
       "type": "shadowsocks"
     },
     {
       "method": "aes-256-cfb",
-      "password": "f8f7aCzcPKbsF8p3",
-      "server": "192.36.27.94",
-      "server_port": 989,
-      "tag": "proxy-1700",
+      "password": "qwerREWQ@@",
+      "server": "185.189.160.105",
+      "server_port": 41632,
+      "tag": "proxy-1698",
       "type": "shadowsocks"
     },
     {
-      "method": "aes-256-cfb",
-      "password": "a3GFYt36Sm82Vys9",
-      "server": "217.30.10.70",
-      "server_port": 9000,
-      "tag": "proxy-1704",
+      "method": "chacha20-ietf-poly1305",
+      "password": "7e731ec3-f8e1-43f6-92cf-3978d14705c4",
+      "server": "r3mrcg001286ek2.cybervena.com",
+      "server_port": 50099,
+      "tag": "proxy-1702",
       "type": "shadowsocks"
     },
     {
       "method": "chacha20-ietf-poly1305",
       "password": "ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=",
-      "server": "138.186.143.32",
+      "server": "156.59.243.6",
       "server_port": 990,
-      "tag": "proxy-1716",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "aes-256-cfb",
-      "password": "f8f7aCzcPKbsF8p3",
-      "server": "154.90.62.168",
-      "server_port": 989,
-      "tag": "proxy-1715",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "aes-256-cfb",
-      "password": "f8f7aCzcPKbsF8p3",
-      "server": "138.186.143.32",
-      "server_port": 989,
-      "tag": "proxy-1719",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=",
-      "server": "147.78.1.230",
-      "server_port": 990,
-      "tag": "proxy-1723",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "aes-256-cfb",
-      "password": "f8f7aCzcPKbsF8p3",
-      "server": "203.23.128.33",
-      "server_port": 989,
-      "tag": "proxy-1711",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "aes-256-cfb",
-      "password": "f8f7aCzcPKbsF8p3",
-      "server": "38.54.57.90",
-      "server_port": 989,
-      "tag": "proxy-1722",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=",
-      "server": "38.60.250.107",
-      "server_port": 990,
-      "tag": "proxy-1734",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "aes-256-cfb",
-      "password": "f8f7aCzcPKbsF8p3",
-      "server": "134.209.147.198",
-      "server_port": 989,
-      "tag": "proxy-1725",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=",
-      "server": "188.214.157.58",
-      "server_port": 990,
-      "tag": "proxy-1733",
+      "tag": "proxy-1692",
       "type": "shadowsocks"
     },
     {
@@ -878,7 +728,63 @@
       "password": "2EmWRS1TkS3TkxKApnrihb3aHjDSXRvT1T1K9U2Bruxrnp5A8zmpTxwwTNje6BkVqmn9BgRF6pq8qoRHCfZdcah7BLbjrpT1",
       "server": "185.5.38.111",
       "server_port": 55988,
+      "tag": "proxy-1711",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "203.23.128.33",
+      "server_port": 989,
+      "tag": "proxy-1714",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "38.165.233.93",
+      "server_port": 989,
       "tag": "proxy-1708",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "138.186.143.32",
+      "server_port": 989,
+      "tag": "proxy-1721",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "154.90.63.177",
+      "server_port": 989,
+      "tag": "proxy-1719",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "38.54.57.90",
+      "server_port": 989,
+      "tag": "proxy-1723",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "192.71.244.150",
+      "server_port": 989,
+      "tag": "proxy-1727",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "38.60.223.8",
+      "server_port": 989,
+      "tag": "proxy-1728",
       "type": "shadowsocks"
     },
     {
@@ -886,7 +792,7 @@
       "password": "f8f7aCzcPKbsF8p3",
       "server": "46.183.185.37",
       "server_port": 989,
-      "tag": "proxy-1739",
+      "tag": "proxy-1732",
       "type": "shadowsocks"
     },
     {
@@ -894,103 +800,55 @@
       "password": "f8f7aCzcPKbsF8p3",
       "server": "154.223.20.79",
       "server_port": 989,
-      "tag": "proxy-1737",
+      "tag": "proxy-1731",
       "type": "shadowsocks"
     },
     {
       "security": "auto",
-      "server": "tw53_2.cowvpn.space",
-      "server_port": 11612,
-      "tag": "proxy-1730",
+      "server": "134.195.198.147",
+      "server_port": 443,
+      "tag": "proxy-1844",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "134.195.198.147"
+      },
       "transport": {
         "headers": {
-          "Host": "ws53_2.baidu.com"
+          "Host": "134.195.198.147"
         },
-        "path": "/",
+        "path": "/linkvws",
         "type": "ws"
       },
       "type": "vmess",
-      "uuid": "0bf1cead-bdd4-4692-b3d4-6866ccb9f37a"
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581"
     },
     {
       "security": "auto",
       "server": "107.172.75.141",
       "server_port": 10086,
-      "tag": "proxy-1854",
+      "tag": "proxy-1848",
       "type": "vmess",
       "uuid": "e02c67a8-d769-4d73-833a-ab6acdb86e6e"
     },
     {
-      "password": "tunnel-ljlcf",
-      "server": "tr-1.stunnel.cc",
-      "server_port": 8441,
-      "tag": "proxy-1853",
-      "tls": {
-        "enabled": true,
-        "insecure": true,
-        "server_name": "creativecommons.org"
-      },
-      "type": "trojan"
-    },
-    {
-      "security": "auto",
-      "server": "45.92.70.236",
-      "server_port": 22324,
-      "tag": "proxy-1949",
-      "type": "vmess",
-      "uuid": "04621bae-ab36-11ec-b909-0242ac120002"
-    },
-    {
-      "password": "BxceQaOe",
-      "server": "58.152.53.22",
-      "server_port": 443,
-      "tag": "proxy-1940",
-      "tls": {
-        "enabled": true,
-        "insecure": true,
-        "server_name": "t.me/ripaojiedian"
-      },
-      "type": "trojan"
-    },
-    {
-      "password": "uThbm8eGmXZ7GKqnWy",
-      "server": "nl-4.tr202507.com",
-      "server_port": 443,
-      "tag": "proxy-1945",
-      "tls": {
-        "enabled": true,
-        "insecure": true,
-        "server_name": "nl-4.tr202507.com"
-      },
-      "type": "trojan"
-    },
-    {
       "password": "M08tvzYWtUEJNtbpHp",
-      "server": "194.124.216.192",
+      "server": "nl-4.tr202512.com",
       "server_port": 443,
-      "tag": "proxy-1946",
+      "tag": "proxy-1941",
       "tls": {
         "enabled": true,
         "insecure": true,
-        "server_name": "194.124.216.192"
+        "server_name": "nl-4.tr202512.com"
       },
       "type": "trojan"
-    },
-    {
-      "alter_id": 1,
-      "security": "auto",
-      "server": "67.220.72.237",
-      "server_port": 22324,
-      "tag": "proxy-1958",
-      "type": "vmess",
-      "uuid": "04621bae-ab36-11ec-b909-0242ac120002"
     },
     {
       "alter_id": 1,
       "security": "auto",
       "server": "172.233.17.76",
       "server_port": 22324,
-      "tag": "proxy-1954",
+      "tag": "proxy-1948",
       "type": "vmess",
       "uuid": "04621bae-ab36-11ec-b909-0242ac120002"
     },
@@ -998,7 +856,7 @@
       "security": "auto",
       "server": "107.175.91.118",
       "server_port": 443,
-      "tag": "proxy-1961",
+      "tag": "proxy-1955",
       "tls": {
         "enabled": true,
         "insecure": true,
@@ -1015,31 +873,23 @@
       "uuid": "1bb1f95f-7425-4442-93f7-8fc1bd1a2001"
     },
     {
-      "security": "auto",
-      "server": "pe1.bctuo.top",
-      "server_port": 443,
-      "tag": "proxy-1948",
-      "type": "vmess",
-      "uuid": "31801968-9877-4ef5-be87-56503c34a69d"
-    },
-    {
-      "password": "strong-secret-pass-777",
-      "server": "94.131.105.125",
-      "server_port": 4443,
-      "tag": "proxy-1962",
+      "password": "kkzh2prsyr2ik47as615",
+      "server": "64.94.95.118",
+      "server_port": 57142,
+      "tag": "proxy-1957",
       "tls": {
         "enabled": true,
         "insecure": true,
-        "server_name": "94.131.105.125"
+        "server_name": "64.94.95.118"
       },
       "type": "trojan"
     },
     {
       "alter_id": 2,
       "security": "auto",
-      "server": "v33.hdacd.com",
-      "server_port": 30833,
-      "tag": "proxy-1960",
+      "server": "v8.hdacd.com",
+      "server_port": 30808,
+      "tag": "proxy-1949",
       "type": "vmess",
       "uuid": "cbb3f877-d1fb-344c-87a9-d153bffd5484"
     },
@@ -1048,32 +898,15 @@
       "security": "auto",
       "server": "v4.hdacd.com",
       "server_port": 30804,
-      "tag": "proxy-1956",
+      "tag": "proxy-1950",
       "type": "vmess",
       "uuid": "cbb3f877-d1fb-344c-87a9-d153bffd5484"
-    },
-    {
-      "alter_id": 2,
-      "security": "auto",
-      "server": "v8.hdacd.com",
-      "server_port": 30808,
-      "tag": "proxy-1955",
-      "type": "vmess",
-      "uuid": "cbb3f877-d1fb-344c-87a9-d153bffd5484"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=",
-      "server": "188.214.157.30",
-      "server_port": 990,
-      "tag": "proxy-1942",
-      "type": "shadowsocks"
     },
     {
       "security": "auto",
       "server": "134.195.198.147",
       "server_port": 443,
-      "tag": "proxy-2385",
+      "tag": "proxy-2380",
       "tls": {
         "enabled": true,
         "insecure": true,
@@ -1093,7 +926,7 @@
       "security": "auto",
       "server": "23.162.200.227",
       "server_port": 443,
-      "tag": "proxy-2387",
+      "tag": "proxy-2381",
       "tls": {
         "enabled": true,
         "insecure": true,
@@ -1101,7 +934,7 @@
       },
       "transport": {
         "headers": {
-          "Host": "nelly.homes"
+          "Host": "vk.com"
         },
         "path": "/linkvws",
         "type": "ws"
@@ -1110,58 +943,85 @@
       "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581"
     },
     {
-      "security": "auto",
-      "server": "146.56.112.110",
-      "server_port": 8888,
-      "tag": "proxy-3104",
-      "type": "vmess",
-      "uuid": "e7c302f3-90d6-42dd-9d7d-94a3683a3707"
-    },
-    {
-      "security": "auto",
-      "server": "38.107.234.57",
-      "server_port": 80,
-      "tag": "proxy-3119",
+      "server": "162.19.228.119",
+      "server_port": 443,
+      "tag": "proxy-2598",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "162.19.228.119"
+      },
       "transport": {
         "headers": {
-          "Host": "38.107.234.57"
+          "Host": "162.19.228.119"
         },
-        "path": "/vmess/",
+        "path": "/ssl",
         "type": "ws"
       },
-      "type": "vmess",
-      "uuid": "567f4be5-12ab-42e1-b8d9-db6fd1fdd31c"
+      "type": "vless",
+      "uuid": "a3873eb9-0c54-46c4-abbf-ae9f880d3619"
     },
     {
-      "method": "aes-256-gcm",
-      "password": "k6ruJuwgAUxIrkHb",
-      "server": "154.53.63.32",
+      "server": "162.19.228.119",
+      "server_port": 443,
+      "tag": "proxy-2599",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "162.19.228.119"
+      },
+      "transport": {
+        "headers": {
+          "Host": "162.19.228.119"
+        },
+        "path": "/ssl",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "a3873eb9-0c54-46c4-abbf-ae9f880d3619"
+    },
+    {
+      "server": "de.vpnbase.net",
       "server_port": 80,
-      "tag": "proxy-3922",
-      "type": "shadowsocks"
+      "tag": "proxy-2657",
+      "transport": {
+        "headers": {
+          "Host": "de.vpnbase.net"
+        },
+        "path": "/http",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "dc8eccdb-ecfa-435f-9ac1-5dc4882e7b51"
     },
     {
-      "method": "chacha20-ietf-poly1305",
-      "password": "1d1bc54689ed4b75",
-      "server": "119.159.245.24",
-      "server_port": 26736,
-      "tag": "proxy-3923",
-      "type": "shadowsocks"
+      "server": "de.vpnbase.net",
+      "server_port": 80,
+      "tag": "proxy-2658",
+      "transport": {
+        "headers": {
+          "Host": "wrmelmwxlf.gktevlrqznwqqozy.fabpfs66gizmnojhcvqxwl.kytrcfzqla87gvgvs6c7kjnrubuh.cc"
+        },
+        "path": "/http",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "dc8eccdb-ecfa-435f-9ac1-5dc4882e7b51"
     },
     {
       "method": "chacha20-ietf-poly1305",
       "password": "312ee9bcc9570095",
       "server": "163.171.148.71",
       "server_port": 11201,
-      "tag": "proxy-3924",
+      "tag": "proxy-3919",
       "type": "shadowsocks"
     },
     {
       "method": "aes-256-gcm",
-      "password": "cdBIDV42DCwnfIN",
-      "server": "38.180.113.194",
-      "server_port": 8119,
-      "tag": "proxy-3925",
+      "password": "YhzqOeJsfuZ9rkkc",
+      "server": "149.102.132.186",
+      "server_port": 80,
+      "tag": "proxy-3927",
       "type": "shadowsocks"
     },
     {
@@ -1169,37 +1029,37 @@
       "password": "shadowsocks",
       "server": "37.19.198.243",
       "server_port": 443,
-      "tag": "proxy-3934",
+      "tag": "proxy-3929",
       "type": "shadowsocks"
     },
     {
       "method": "chacha20-ietf-poly1305",
-      "password": "RFK38Cg7APneSB5cWDcpbm",
-      "server": "92.112.126.90",
+      "password": "hbGrpfvNrJsUmKmPbR3iY2",
+      "server": "38.135.24.131",
       "server_port": 443,
-      "tag": "proxy-3931",
+      "tag": "proxy-3930",
       "type": "shadowsocks"
     },
     {
       "method": "chacha20-ietf-poly1305",
-      "password": "6ff1423f61ffe673",
-      "server": "38.54.59.16",
-      "server_port": 11201,
-      "tag": "proxy-3933",
+      "password": "oZIoA69Q8yhcQV8ka3Pa3A",
+      "server": "82.38.31.69",
+      "server_port": 8080,
+      "tag": "proxy-3935",
       "type": "shadowsocks"
     },
     {
       "method": "aes-256-gcm",
-      "password": "RexnBgU7EV5ADxG",
-      "server": "213.202.208.199",
-      "server_port": 7001,
-      "tag": "proxy-3942",
+      "password": "cdBIDV42DCwnfIN",
+      "server": "38.180.113.194",
+      "server_port": 8119,
+      "tag": "proxy-3920",
       "type": "shadowsocks"
     },
     {
       "server": "103.245.237.124",
       "server_port": 58202,
-      "tag": "proxy-4097",
+      "tag": "proxy-4093",
       "transport": {
         "headers": {
           "Host": "103.245.237.124"
@@ -1212,18 +1072,18 @@
     },
     {
       "method": "aes-128-gcm",
-      "password": "162629d7-cb17-43b1-82c9-f9c7ae6cba70",
-      "server": "82.180.146.173",
-      "server_port": 30607,
-      "tag": "proxy-4260",
+      "password": "shadowsocks",
+      "server": "149.22.87.241",
+      "server_port": 443,
+      "tag": "proxy-4256",
       "type": "shadowsocks"
     },
     {
       "method": "aes-256-cfb",
-      "password": "kSPmvwdFzGMMW5pY",
+      "password": "fG2artUmHfNT2cX7",
       "server": "217.30.10.70",
-      "server_port": 9007,
-      "tag": "proxy-4405",
+      "server_port": 9018,
+      "tag": "proxy-4410",
       "type": "shadowsocks"
     },
     {
@@ -1231,39 +1091,7 @@
       "password": "UkXRsXvR6buDMG2Y",
       "server": "217.30.10.70",
       "server_port": 9001,
-      "tag": "proxy-4469",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "oZIoA69Q8yhcQV8ka3Pa3A",
-      "server": "82.38.31.66",
-      "server_port": 8080,
-      "tag": "proxy-4480",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "eafad96826c79ddd",
-      "server": "163.171.137.76",
-      "server_port": 47395,
-      "tag": "proxy-4545",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "aes-256-gcm",
-      "password": "k6ruJuwgAUxIrkHb",
-      "server": "154.53.63.32",
-      "server_port": 443,
-      "tag": "proxy-4556",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "aes-256-gcm",
-      "password": "nKeE2ZFWVaE4DyjR",
-      "server": "154.38.176.7",
-      "server_port": 80,
-      "tag": "proxy-4553",
+      "tag": "proxy-4466",
       "type": "shadowsocks"
     },
     {
@@ -1271,64 +1099,55 @@
       "password": "uwmRUOVM5ljNAtPj",
       "server": "154.53.57.143",
       "server_port": 443,
+      "tag": "proxy-4556",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "aes-256-gcm",
+      "password": "wlJSF0fC8uqB5Gm5",
+      "server": "94.72.127.55",
+      "server_port": 443,
       "tag": "proxy-4559",
       "type": "shadowsocks"
     },
     {
       "server": "47.82.1.12",
       "server_port": 59100,
-      "tag": "proxy-4570",
+      "tag": "proxy-4568",
       "type": "vless",
       "uuid": "ca0e8520-42cd-49db-cfec-1295834b9e21"
     },
     {
-      "method": "chacha20-ietf-poly1305",
-      "password": "9d97433688e7efd5",
-      "server": "163.171.206.24",
-      "server_port": 44234,
-      "tag": "proxy-4593",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "d954bd6dd74a7f48",
-      "server": "54.37.78.130",
-      "server_port": 11201,
-      "tag": "proxy-4676",
-      "type": "shadowsocks"
-    },
-    {
-      "password": "UNWA6USASAb6=uAAZeZMFd+2uKB4.d5KOm",
-      "server": "166.88.197.189",
-      "server_port": 26650,
-      "tag": "proxy-4728",
+      "server": "15.237.145.187",
+      "server_port": 22224,
+      "tag": "proxy-4608",
       "tls": {
         "enabled": true,
         "insecure": true,
-        "server_name": "166.88.197.189"
+        "server_name": "15.237.145.187"
       },
-      "type": "trojan"
+      "transport": {
+        "headers": {
+          "Host": "15.237.145.187"
+        },
+        "path": "/telegram-channel-vlessconfig",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "05519058-d2ac-4f28-9e4a-2b2a1386749e"
     },
     {
       "method": "chacha20-ietf-poly1305",
-      "password": "7e731ec3-f8e1-43f6-92cf-3978d14705c4",
-      "server": "n8mrcg005964vnc.cybervena.com",
-      "server_port": 50099,
-      "tag": "proxy-4963",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "e777513e-9df5-4dc3-bc84-74e564345a81",
-      "server": "usgpt.slianrk.com",
-      "server_port": 13012,
-      "tag": "proxy-5449",
+      "password": "oZIoA69Q8yhcQV8ka3Pa3A",
+      "server": "193.29.139.152",
+      "server_port": 8080,
+      "tag": "proxy-4702",
       "type": "shadowsocks"
     },
     {
       "server": "45.140.43.27",
       "server_port": 80,
-      "tag": "proxy-5766",
+      "tag": "proxy-5738",
       "transport": {
         "headers": {
           "Host": "45.140.43.27"
@@ -1341,118 +1160,26 @@
     },
     {
       "method": "chacha20-ietf-poly1305",
+      "password": "W74XFALLLuw6m5IA",
+      "server": "20.108.21.39",
+      "server_port": 443,
+      "tag": "proxy-5743",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
       "password": "k1dBOmOB4oqi7Ump37a1bQ",
       "server": "82.38.31.186",
       "server_port": 8080,
-      "tag": "proxy-5776",
+      "tag": "proxy-5748",
       "type": "shadowsocks"
     },
     {
       "method": "chacha20-ietf-poly1305",
-      "password": "1kVr0KATIJI7mwOF",
-      "server": "20.108.21.39",
-      "server_port": 443,
-      "tag": "proxy-5782",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "cb955c8530320120",
-      "server": "38.54.29.57",
-      "server_port": 11201,
-      "tag": "proxy-5796",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=",
-      "server": "38.54.59.107",
-      "server_port": 990,
-      "tag": "proxy-5819",
-      "type": "shadowsocks"
-    },
-    {
-      "security": "auto",
-      "server": "172.233.137.157",
-      "server_port": 2053,
-      "tag": "proxy-5824",
-      "tls": {
-        "enabled": true,
-        "insecure": true,
-        "server_name": "172.233.137.157"
-      },
-      "transport": {
-        "headers": {
-          "Host": "usaapp1.jisuyun.top"
-        },
-        "path": "/usavm",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "4b80aa86-4354-40bb-d2a3-47126cff0bea"
-    },
-    {
-      "security": "auto",
-      "server": "216.238.86.158",
-      "server_port": 34460,
-      "tag": "proxy-5825",
-      "type": "vmess",
-      "uuid": "90be214d-048c-4ea2-a602-b8e4d4e51e36"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "1d1bc54689ed4b75",
-      "server": "119.159.245.24",
-      "server_port": 26738,
-      "tag": "proxy-5822",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "7afa39016d5a409c",
-      "server": "194.233.73.51",
-      "server_port": 48801,
-      "tag": "proxy-5834",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "7e731ec3-f8e1-43f6-92cf-3978d14705c4",
-      "server": "1.161.245.168",
-      "server_port": 50099,
-      "tag": "proxy-5849",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "71807718f593d3e6",
-      "server": "154.205.148.202",
-      "server_port": 11201,
-      "tag": "proxy-5890",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "6d0084c6e4502ab7",
+      "password": "eafad96826c79ddd",
       "server": "163.171.137.76",
-      "server_port": 48436,
-      "tag": "proxy-5889",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "7e731ec3-f8e1-43f6-92cf-3978d14705c4",
-      "server": "111.248.76.133",
-      "server_port": 50099,
-      "tag": "proxy-5891",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "303ac65e30f28b0b",
-      "server": "154.205.139.9",
-      "server_port": 11203,
-      "tag": "proxy-5895",
+      "server_port": 47392,
+      "tag": "proxy-5757",
       "type": "shadowsocks"
     },
     {
@@ -1460,25 +1187,48 @@
       "security": "auto",
       "server": "216.106.183.35",
       "server_port": 22324,
-      "tag": "proxy-5905",
-      "type": "vmess",
-      "uuid": "04621bae-ab36-11ec-b909-0242ac120002"
-    },
-    {
-      "alter_id": 1,
-      "security": "auto",
-      "server": "45.82.161.225",
-      "server_port": 22324,
-      "tag": "proxy-5906",
+      "tag": "proxy-5794",
       "type": "vmess",
       "uuid": "04621bae-ab36-11ec-b909-0242ac120002"
     },
     {
       "method": "chacha20-ietf-poly1305",
-      "password": "eafad96826c79ddd",
-      "server": "163.171.137.76",
-      "server_port": 47392,
-      "tag": "proxy-5903",
+      "password": "1d1bc54689ed4b75",
+      "server": "119.159.245.24",
+      "server_port": 26737,
+      "tag": "proxy-5804",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "303ac65e30f28b0b",
+      "server": "154.205.139.9",
+      "server_port": 11202,
+      "tag": "proxy-5812",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "303ac65e30f28b0b",
+      "server": "154.205.139.9",
+      "server_port": 11203,
+      "tag": "proxy-5813",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "303ac65e30f28b0b",
+      "server": "154.205.139.9",
+      "server_port": 11204,
+      "tag": "proxy-5814",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=",
+      "server": "154.205.159.100",
+      "server_port": 990,
+      "tag": "proxy-5816",
       "type": "shadowsocks"
     },
     {
@@ -1486,21 +1236,37 @@
       "password": "ded718fcb2bb17b7",
       "server": "154.26.132.38",
       "server_port": 27883,
-      "tag": "proxy-5900",
+      "tag": "proxy-5821",
+      "type": "shadowsocks"
+    },
+    {
+      "security": "auto",
+      "server": "216.238.86.158",
+      "server_port": 34460,
+      "tag": "proxy-5883",
+      "type": "vmess",
+      "uuid": "90be214d-048c-4ea2-a602-b8e4d4e51e36"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "7afa39016d5a409c",
+      "server": "194.233.73.51",
+      "server_port": 48803,
+      "tag": "proxy-5872",
       "type": "shadowsocks"
     },
     {
       "method": "chacha20-ietf-poly1305",
-      "password": "ded718fcb2bb17b7",
-      "server": "154.26.132.38",
-      "server_port": 27885,
-      "tag": "proxy-5902",
+      "password": "7afa39016d5a409c",
+      "server": "194.233.73.51",
+      "server_port": 48802,
+      "tag": "proxy-5871",
       "type": "shadowsocks"
     },
     {
       "server": "h7-83w.pages.dev",
       "server_port": 443,
-      "tag": "proxy-6127",
+      "tag": "proxy-6100",
       "tls": {
         "enabled": true,
         "insecure": true,
@@ -1519,7 +1285,7 @@
     {
       "server": "e1-f55.pages.dev",
       "server_port": 443,
-      "tag": "proxy-6131",
+      "tag": "proxy-6105",
       "tls": {
         "enabled": true,
         "insecure": true,
@@ -1536,66 +1302,42 @@
       "uuid": "8b5acf77-2c2e-4eed-9ad1-be81851b99ea"
     },
     {
-      "server": "neo1-3zc.pages.dev",
+      "server": "a1-tss.pages.dev",
       "server_port": 443,
-      "tag": "proxy-6156",
+      "tag": "proxy-6110",
       "tls": {
         "enabled": true,
         "insecure": true,
-        "server_name": "neo1-3zc.pages.dev"
+        "server_name": "a1-tss.pages.dev"
       },
       "transport": {
         "headers": {
-          "Host": "nEO1-3zC.pAGes.DeV"
+          "Host": "a1-tss.pages.dev"
         },
         "path": "/",
         "type": "ws"
       },
       "type": "vless",
-      "uuid": "bd26c0c3-5eb9-425e-a4b6-2660df94e613"
+      "uuid": "f86f5a03-3872-46b5-bf03-a50388a0261d"
     },
     {
-      "server": "purple-forest.ru",
-      "server_port": 443,
-      "tag": "proxy-6136",
-      "tls": {
-        "enabled": true,
-        "insecure": true,
-        "server_name": "purple-forest.ru"
-      },
+      "server": "ov-france1.09vpn.com",
+      "server_port": 80,
+      "tag": "proxy-6112",
       "transport": {
         "headers": {
-          "Host": "purple-forest.ru"
+          "Host": "ov-france1.09vpn.com"
         },
-        "path": "/26608/oFQ55tweb_path",
+        "path": "/vless/",
         "type": "ws"
       },
       "type": "vless",
-      "uuid": "5fa0466d-417f-4661-924b-dfdfbbd8a08b"
-    },
-    {
-      "server": "newcloud.gushao.club",
-      "server_port": 2053,
-      "tag": "proxy-6176",
-      "tls": {
-        "enabled": true,
-        "insecure": true,
-        "server_name": "newcloud.gushao.club"
-      },
-      "transport": {
-        "headers": {
-          "Host": "newcloud.gushao.club"
-        },
-        "path": "/shauiiuibggyyguugy",
-        "type": "ws"
-      },
-      "type": "vless",
-      "uuid": "9abcf3f0-c607-49c6-8663-7c3e549fc814"
+      "uuid": "25f86cb1-2140-4085-abcb-c3a0ea7a4be0"
     },
     {
       "server": "154.64.238.106",
       "server_port": 52573,
-      "tag": "proxy-6167",
+      "tag": "proxy-6132",
       "transport": {
         "headers": {
           "Host": "154.64.238.106"
@@ -1607,9 +1349,23 @@
       "uuid": "47875ae5-09bb-4d6c-c212-4ced5fa8d1ee"
     },
     {
+      "server": "188.166.185.59",
+      "server_port": 17003,
+      "tag": "proxy-6125",
+      "transport": {
+        "headers": {
+          "Host": "188.166.185.59"
+        },
+        "path": "/FREE%20By%20Tharuwa%20%280767597317%29",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "9f21d61a-98a1-4cc6-bb1b-b62115977f39"
+    },
+    {
       "server": "v2ray.simspeedup.com",
       "server_port": 80,
-      "tag": "proxy-6161",
+      "tag": "proxy-6128",
       "transport": {
         "headers": {
           "Host": "aIs.SpEeDtEsT.nEt"
@@ -1623,52 +1379,45 @@
     {
       "method": "aes-128-gcm",
       "password": "shadowsocks",
-      "server": "156.146.38.168",
+      "server": "149.22.95.183",
       "server_port": 443,
-      "tag": "proxy-6460",
+      "tag": "proxy-6424",
       "type": "shadowsocks"
     },
     {
-      "security": "auto",
-      "server": "xg1c4.waimaofuwujd.cc",
+      "method": "aes-256-gcm",
+      "password": "XKFKl2rULjIp74",
+      "server": "103.106.228.175",
+      "server_port": 8009,
+      "tag": "proxy-6427",
+      "type": "shadowsocks"
+    },
+    {
+      "password": "uThbm8eGmXZ7GKqnWy",
+      "server": "nl3.russiavpn.publicvm.com",
       "server_port": 443,
-      "tag": "proxy-6439",
+      "tag": "proxy-6422",
       "tls": {
         "enabled": true,
         "insecure": true,
-        "server_name": "xg1c4.waimaofuwujd.cc"
+        "server_name": "max.ru"
       },
-      "transport": {
-        "headers": {
-          "Host": "xg1c4.waimaofuwujd.cc"
-        },
-        "path": "/api/v1/graphql",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "1a87fc81-6846-4246-add3-00a38baa8c0f"
-    },
-    {
-      "security": "auto",
-      "server": "46.246.126.154",
-      "server_port": 443,
-      "tag": "proxy-6464",
-      "transport": {
-        "headers": {
-          "Host": "46.246.126.154"
-        },
-        "path": "/",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "f2fd0786-1059-4f64-d54e-3f3a568c6c68"
+      "type": "trojan"
     },
     {
       "method": "chacha20-ietf-poly1305",
       "password": "ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=",
-      "server": "185.113.143.186",
+      "server": "185.237.185.89",
       "server_port": 990,
-      "tag": "proxy-6467",
+      "tag": "proxy-6429",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "7e731ec3-f8e1-43f6-92cf-3978d14705c4",
+      "server": "36.224.153.21",
+      "server_port": 50099,
+      "tag": "proxy-6434",
       "type": "shadowsocks"
     },
     {
@@ -1676,15 +1425,7 @@
       "password": "7e731ec3-f8e1-43f6-92cf-3978d14705c4",
       "server": "111.248.106.149",
       "server_port": 50099,
-      "tag": "proxy-6465",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=",
-      "server": "185.237.185.89",
-      "server_port": 990,
-      "tag": "proxy-6466",
+      "tag": "proxy-6436",
       "type": "shadowsocks"
     },
     {
@@ -1692,7 +1433,7 @@
       "password": "a792ff4b517fdf1c",
       "server": "51.68.146.248",
       "server_port": 10011,
-      "tag": "proxy-6471",
+      "tag": "proxy-6435",
       "type": "shadowsocks"
     },
     {
@@ -1700,15 +1441,31 @@
       "password": "umWwoQJEJGf74SLe",
       "server": "149.102.149.207",
       "server_port": 80,
-      "tag": "proxy-6475",
+      "tag": "proxy-6440",
       "type": "shadowsocks"
     },
     {
-      "method": "chacha20-ietf-poly1305",
-      "password": "be4a6fd2209f62a7",
-      "server": "185.67.125.109",
-      "server_port": 11201,
-      "tag": "proxy-6469",
+      "method": "aes-256-gcm",
+      "password": "SL4vzcvhBHhTWivD",
+      "server": "154.26.155.172",
+      "server_port": 80,
+      "tag": "proxy-6439",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "188.214.36.155",
+      "server_port": 989,
+      "tag": "proxy-6442",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "aes-256-gcm",
+      "password": "qKvfX7yQnT99OMu3",
+      "server": "194.233.75.190",
+      "server_port": 80,
+      "tag": "proxy-6438",
       "type": "shadowsocks"
     },
     {
@@ -1716,14 +1473,14 @@
       "password": "SL4vzcvhBHhTWivD",
       "server": "154.26.155.172",
       "server_port": 443,
-      "tag": "proxy-6479",
+      "tag": "proxy-6443",
       "type": "shadowsocks"
     },
     {
       "security": "auto",
       "server": "47.250.153.136",
       "server_port": 42712,
-      "tag": "proxy-6477",
+      "tag": "proxy-6441",
       "transport": {
         "headers": {
           "Host": "47.250.153.136"
@@ -1735,41 +1492,30 @@
       "uuid": "77ed1965-3115-4d05-fbbd-bf1393452645"
     },
     {
-      "method": "chacha20-ietf-poly1305",
-      "password": "ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=",
-      "server": "45.15.185.70",
-      "server_port": 990,
-      "tag": "proxy-6472",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=",
-      "server": "154.205.150.157",
-      "server_port": 990,
-      "tag": "proxy-6482",
-      "type": "shadowsocks"
-    },
-    {
       "security": "auto",
-      "server": "152.67.8.205",
-      "server_port": 80,
-      "tag": "proxy-6476",
+      "server": "107.175.91.118",
+      "server_port": 443,
+      "tag": "proxy-6480",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "107.175.91.118"
+      },
       "transport": {
         "headers": {
-          "Host": "152.67.8.205"
+          "Host": "107.175.91.118"
         },
-        "path": "/",
+        "path": "/v2ray-wisp",
         "type": "ws"
       },
       "type": "vmess",
-      "uuid": "9db4c708-aef8-4359-821b-38e47990be0d"
+      "uuid": "1bb1f95f-7425-4442-93f7-8fc1bd1a2001"
     },
     {
       "security": "auto",
       "server": "47.250.153.136",
       "server_port": 26321,
-      "tag": "proxy-6481",
+      "tag": "proxy-6446",
       "transport": {
         "headers": {
           "Host": "47.250.153.136"
@@ -1781,90 +1527,29 @@
       "uuid": "95158bcb-5c4b-46b0-a9cc-67f9fb7b8dd8"
     },
     {
+      "alter_id": 1,
       "security": "auto",
-      "server": "xg1b1.waimaofuwujd.cc",
-      "server_port": 443,
-      "tag": "proxy-6506",
-      "tls": {
-        "enabled": true,
-        "insecure": true,
-        "server_name": "xg1b1.waimaofuwujd.cc"
-      },
-      "transport": {
-        "headers": {
-          "Host": "xg1b1.waimaofuwujd.cc"
-        },
-        "path": "/api/v1/graphql",
-        "type": "ws"
-      },
+      "server": "45.82.161.225",
+      "server_port": 22324,
+      "tag": "proxy-6482",
       "type": "vmess",
-      "uuid": "1a87fc81-6846-4246-add3-00a38baa8c0f"
-    },
-    {
-      "password": "M08tvzYWtUEJNtbpHp",
-      "server": "194.124.216.191",
-      "server_port": 443,
-      "tag": "proxy-6507",
-      "tls": {
-        "enabled": true,
-        "insecure": true,
-        "server_name": "nl-4.tr202512.com"
-      },
-      "type": "trojan"
-    },
-    {
-      "password": "M08tvzYWtUEJNtbpHp",
-      "server": "194.124.216.194",
-      "server_port": 443,
-      "tag": "proxy-6508",
-      "tls": {
-        "enabled": true,
-        "insecure": true,
-        "server_name": "nl-4.tr202512.com"
-      },
-      "type": "trojan"
+      "uuid": "04621bae-ab36-11ec-b909-0242ac120002"
     },
     {
       "security": "auto",
-      "server": "134.195.198.147",
-      "server_port": 443,
-      "tag": "proxy-6546",
-      "tls": {
-        "enabled": true,
-        "insecure": true,
-        "server_name": "134.195.198.147"
-      },
-      "transport": {
-        "headers": {
-          "Host": "134.195.198.147"
-        },
-        "path": "/linkvws",
-        "type": "ws"
-      },
+      "server": "94.232.247.164",
+      "server_port": 44030,
+      "tag": "proxy-6485",
       "type": "vmess",
-      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581"
+      "uuid": "22c396a3-95da-4be8-beef-834d17d75784"
     },
     {
-      "server": "fsdns.ectunnelvpn.me",
-      "server_port": 80,
-      "tag": "proxy-6553",
-      "transport": {
-        "headers": {
-          "Host": "fsdns.ectunnelvpn.me"
-        },
-        "path": "/vless",
-        "type": "ws"
-      },
-      "type": "vless",
-      "uuid": "15cbab96-197e-46a5-9042-073b3980c798"
-    },
-    {
-      "security": "auto",
-      "server": "us02.bctuo.top",
-      "server_port": 1443,
-      "tag": "proxy-6541",
-      "type": "vmess",
-      "uuid": "31801968-9877-4ef5-be87-56503c34a69d"
+      "method": "chacha20-ietf-poly1305",
+      "password": "e777513e-9df5-4dc3-bc84-74e564345a81",
+      "server": "usgpt.slianrk.com",
+      "server_port": 13012,
+      "tag": "proxy-6455",
+      "type": "shadowsocks"
     }
   ],
   "route": {}
