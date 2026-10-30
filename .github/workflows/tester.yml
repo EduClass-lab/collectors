@@ -1,3 +1,4 @@
+
 # .github/workflows/tester.yml
 
 name: Test Proxies
@@ -5,13 +6,19 @@ name: Test Proxies
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   test-and-sort-proxies:
     name: Test and Sort Proxies
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v5.0.0
+        with:
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v6.0.0
@@ -24,202 +31,601 @@ jobs:
           pip install geoip2
 
       - name: Download GeoLite2 Country Database
-        run: wget -O utils/GeoLite2-Country.mmdb https://git.io/GeoLite2-Country.mmdb
+        run: |
+          mkdir -p utils
+          wget -q -O utils/GeoLite2-Country.mmdb \
+            https://git.io/GeoLite2-Country.mmdb
+
+          if [ ! -s utils/GeoLite2-Country.mmdb ]; then
+            echo "ERROR: GeoIP database download failed."
+            exit 1
+          fi
 
       - name: Prepare Proxy List from Local File
         run: |
-          echo "Preparing proxy list from local file: sub/sub_merge_base64.txt"
-          echo "Decoding the list to raw proxy links..."
-          base64 -d ./sub/sub_merge_base64.txt > proxies.txt
-          echo "Total proxies prepared for testing: $(wc -l < proxies.txt)"
+          set -e
+
+          INPUT_FILE="./sub/sub_merge_base64.txt"
+
+          echo "Preparing proxy list from: $INPUT_FILE"
+
+          if [ ! -f "$INPUT_FILE" ]; then
+            echo "ERROR: Input file not found: $INPUT_FILE"
+            exit 1
+          fi
+
+          # Decode Base64 safely.
+          if ! base64 -d "$INPUT_FILE" > proxies.txt; then
+            echo "ERROR: Failed to decode Base64 proxy list."
+            exit 1
+          fi
+
+          # Remove empty lines.
+          sed -i '/^[[:space:]]*$/d' proxies.txt
+
+          echo "Total proxies prepared: $(wc -l < proxies.txt)"
 
       - name: Create Full Sing-Box Config and Tag Map
         run: |
-          cat <<'EOF' > convert_to_singbox.py
+          cat <<'PYTHON' > convert_to_singbox.py
           import json
           import urllib.parse
           import sys
           import base64
+          import re
 
-          INPUT_FILE = 'proxies.txt'
-          CONFIG_OUTPUT_FILE = 'singbox_config.json'
-          MAP_OUTPUT_FILE = 'tag_map.json'
+          INPUT_FILE = "proxies.txt"
+          CONFIG_OUTPUT_FILE = "singbox_config.json"
+          MAP_OUTPUT_FILE = "tag_map.json"
+
+          def to_string(value, default=""):
+              if value is None:
+                  return default
+              return str(value)
+
+          def decode_base64(value):
+              value = value.strip()
+              value += "=" * (-len(value) % 4)
+
+              try:
+                  return base64.urlsafe_b64decode(value).decode("utf-8")
+              except Exception:
+                  return base64.b64decode(value).decode("utf-8")
 
           def parse_vless(link, index):
-              at_split = link.split('@')
-              if len(at_split) > 1:
-                  server_part = at_split[1].split('?')[0].split('#')[0]
-                  if ':' in server_part and ']:' not in server_part and server_part.count(':') > 1:
-                      last_colon_index = server_part.rfind(':')
-                      hostname = server_part[:last_colon_index]
-                      port = int(server_part[last_colon_index+1:])
-                      parsed_url = urllib.parse.urlparse(link)
-                  else:
-                      parsed_url = urllib.parse.urlparse(link)
-                      hostname = parsed_url.hostname
-                      port = parsed_url.port
-              else:
-                  raise ValueError("Invalid VLESS link structure")
+              parsed_url = urllib.parse.urlparse(link)
+
+              hostname = parsed_url.hostname
+              port = parsed_url.port
+              uuid = parsed_url.username
+
+              if not hostname or not port or not uuid:
+                  raise ValueError("Invalid VLESS server, port, or UUID")
 
               params = urllib.parse.parse_qs(parsed_url.query)
-              
-              original_tag = urllib.parse.unquote(parsed_url.fragment) if parsed_url.fragment else f"proxy-{index}"
+
+              original_tag = (
+                  urllib.parse.unquote(parsed_url.fragment)
+                  if parsed_url.fragment
+                  else f"proxy-{index}"
+              )
+
               safe_tag = f"proxy-{index}"
 
               config = {
-                  "type": "vless", "tag": safe_tag, "server": hostname,
-                  "server_port": port, "uuid": parsed_url.username
+                  "type": "vless",
+                  "tag": safe_tag,
+                  "server": str(hostname),
+                  "server_port": int(port),
+                  "uuid": str(urllib.parse.unquote(uuid))
               }
 
-              if params.get('security', [''])[0] == 'tls':
-                  config["tls"] = {"enabled": True, "insecure": True, "server_name": params.get('sni', [hostname])[0]}
+              security = params.get("security", [""])[0]
 
-              if params.get('type', [''])[0] == 'ws':
-                  ws_opts = {"path": params.get('path', ['/'])[0], "headers": {"Host": params.get('host', [hostname])[0]}}
-                  config["transport"] = {"type": "ws", **ws_opts}
-              
+              if security == "tls":
+                  config["tls"] = {
+                      "enabled": True,
+                      "insecure": True,
+                      "server_name": str(
+                          params.get("sni", [hostname])[0]
+                      )
+                  }
+
+              transport_type = params.get("type", [""])[0]
+
+              if transport_type == "ws":
+                  config["transport"] = {
+                      "type": "ws",
+                      "path": params.get("path", ["/"])[0],
+                      "headers": {
+                          "Host": str(
+                              params.get("host", [hostname])[0]
+                          )
+                      }
+                  }
+
               return config, safe_tag, original_tag
 
           def parse_vmess(link, index):
-              encoded_part = link.replace("vmess://", "")
-              encoded_part += '=' * (-len(encoded_part) % 4)
-              decoded_json = json.loads(base64.b64decode(encoded_part).decode())
+              encoded_part = link[len("vmess://"):]
 
-              original_tag = decoded_json.get('ps', f"proxy-{index}")
+              decoded_json = json.loads(
+                  decode_base64(encoded_part)
+              )
+
+              hostname = decoded_json.get("add")
+              port = decoded_json.get("port")
+              uuid = decoded_json.get("id")
+
+              if hostname is None or port is None or uuid is None:
+                  raise ValueError("Missing VMess server information")
+
+              original_tag = to_string(
+                  decoded_json.get("ps"),
+                  f"proxy-{index}"
+              )
+
               safe_tag = f"proxy-{index}"
 
               config = {
-                  "type": "vmess", "tag": safe_tag, "server": decoded_json.get('add'),
-                  "server_port": int(decoded_json.get('port')), "uuid": decoded_json.get('id'),
-                  "security": decoded_json.get('scy', 'auto'), "alter_id": decoded_json.get('aid', 0)
+                  "type": "vmess",
+                  "tag": safe_tag,
+
+                  # IMPORTANT:
+                  # Always make server a string.
+                  "server": str(hostname),
+
+                  "server_port": int(port),
+                  "uuid": str(uuid),
+
+                  "security": str(
+                      decoded_json.get("scy", "auto")
+                  ),
+
+                  "alter_id": int(
+                      decoded_json.get("aid", 0)
+                  )
               }
 
-              if decoded_json.get('tls', '') == 'tls':
-                  config["tls"] = {"enabled": True, "insecure": True, "server_name": decoded_json.get('sni', decoded_json.get('add'))}
+              if decoded_json.get("tls", "") == "tls":
+                  config["tls"] = {
+                      "enabled": True,
+                      "insecure": True,
+                      "server_name": str(
+                          decoded_json.get("sni", hostname)
+                      )
+                  }
 
-              if decoded_json.get('net', '') == 'ws':
-                  ws_opts = {"path": decoded_json.get('path', '/'), "headers": {"Host": decoded_json.get('host', decoded_json.get('add'))}}
-                  config["transport"] = {"type": "ws", **ws_opts}
+              if decoded_json.get("net", "") == "ws":
+                  config["transport"] = {
+                      "type": "ws",
+                      "path": str(
+                          decoded_json.get("path", "/")
+                      ),
+                      "headers": {
+                          "Host": str(
+                              decoded_json.get("host", hostname)
+                          )
+                      }
+                  }
 
               return config, safe_tag, original_tag
 
           def parse_ss(link, index):
               parsed_url = urllib.parse.urlparse(link)
-              original_tag = urllib.parse.unquote(parsed_url.fragment) if parsed_url.fragment else f"proxy-{index}"
+
+              original_tag = (
+                  urllib.parse.unquote(parsed_url.fragment)
+                  if parsed_url.fragment
+                  else f"proxy-{index}"
+              )
+
               safe_tag = f"proxy-{index}"
 
               if parsed_url.username and parsed_url.hostname:
-                  user_info_part, server_part = parsed_url.netloc.rsplit('@', 1)
-                  method, password = urllib.parse.unquote(user_info_part).split(':', 1)
-                  server, port = server_part.split(':', 1)
+                  user_info = urllib.parse.unquote(
+                      parsed_url.username
+                  )
+
+                  password = urllib.parse.unquote(
+                      parsed_url.password or ""
+                  )
+
+                  method = user_info
+                  server = parsed_url.hostname
+                  port = parsed_url.port
+
               else:
-                  encoded_part = parsed_url.netloc
-                  encoded_part += '=' * (-len(encoded_part) % 4)
-                  decoded_part = base64.urlsafe_b64decode(encoded_part).decode()
-                  
-                  user_info, server_info = decoded_part.rsplit('@', 1)
-                  method, password = user_info.split(':', 1)
-                  server, port = server_info.split(':', 1)
+                  encoded_part = parsed_url.netloc.split("@")[0]
+
+                  decoded_part = decode_base64(encoded_part)
+
+                  user_info, server_info = decoded_part.rsplit(
+                      "@", 1
+                  )
+
+                  method, password = user_info.split(":", 1)
+
+                  server_url = urllib.parse.urlparse(
+                      "//" + server_info
+                  )
+
+                  server = server_url.hostname
+                  port = server_url.port
+
+              if not server or not port or not method:
+                  raise ValueError(
+                      "Invalid Shadowsocks configuration"
+                  )
 
               config = {
-                  "type": "shadowsocks", "tag": safe_tag, "server": server,
-                  "server_port": int(port), "method": method, "password": password
+                  "type": "shadowsocks",
+                  "tag": safe_tag,
+                  "server": str(server),
+                  "server_port": int(port),
+                  "method": str(method),
+                  "password": str(password)
               }
+
               return config, safe_tag, original_tag
 
           def parse_trojan(link, index):
               parsed_url = urllib.parse.urlparse(link)
-              params = urllib.parse.parse_qs(parsed_url.query)
 
-              original_tag = urllib.parse.unquote(parsed_url.fragment) if parsed_url.fragment else f"proxy-{index}"
+              params = urllib.parse.parse_qs(
+                  parsed_url.query
+              )
+
+              hostname = parsed_url.hostname
+              port = parsed_url.port
+              password = parsed_url.username
+
+              if not hostname or not port or not password:
+                  raise ValueError(
+                      "Invalid Trojan server information"
+                  )
+
+              original_tag = (
+                  urllib.parse.unquote(parsed_url.fragment)
+                  if parsed_url.fragment
+                  else f"proxy-{index}"
+              )
+
               safe_tag = f"proxy-{index}"
 
               config = {
-                  "type": "trojan", "tag": safe_tag, "server": parsed_url.hostname,
-                  "server_port": int(parsed_url.port), "password": parsed_url.username
+                  "type": "trojan",
+                  "tag": safe_tag,
+                  "server": str(hostname),
+                  "server_port": int(port),
+                  "password": str(
+                      urllib.parse.unquote(password)
+                  ),
+
+                  "tls": {
+                      "enabled": True,
+                      "insecure": True,
+                      "server_name": str(
+                          params.get("sni", [hostname])[0]
+                      )
+                  }
               }
-              
-              config["tls"] = {"enabled": True, "insecure": True, "server_name": params.get('sni', [parsed_url.hostname])[0]}
-              
+
               return config, safe_tag, original_tag
 
           parsers = {
-              'vless://': parse_vless, 'vmess://': parse_vmess,
-              'ss://': parse_ss, 'trojan://': parse_trojan
+              "vless://": parse_vless,
+              "vmess://": parse_vmess,
+              "ss://": parse_ss,
+              "trojan://": parse_trojan
           }
 
-          outbounds = []; tag_map = {}; skipped_count = 0
+          outbounds = []
+          tag_map = {}
+
+          skipped_count = 0
+          processed_count = 0
+
           try:
-              with open(INPUT_FILE, 'r', encoding='utf-8') as f:
-                  links = [line.strip() for line in f if line.strip()]
-              
-              print(f"Read {len(links)} total links. Processing...")
-              
-              for i, link in enumerate(links):
+              with open(
+                  INPUT_FILE,
+                  "r",
+                  encoding="utf-8"
+              ) as file:
+                  links = [
+                      line.strip()
+                      for line in file
+                      if line.strip()
+                  ]
+
+              print(
+                  f"Read {len(links)} total links. Processing..."
+              )
+
+              for index, link in enumerate(links, start=1):
+
                   parser = None
-                  for prefix, p_func in parsers.items():
+
+                  # Normalize protocol prefixes.
+                  link = link.strip()
+
+                  if link.startswith("hy2://"):
+                      link = "hysteria2://" + link[6:]
+
+                  for prefix, parser_func in parsers.items():
                       if link.startswith(prefix):
-                          parser = p_func
+                          parser = parser_func
                           break
-                  
-                  if parser:
-                      try:
-                          proxy_config, safe_tag, original_tag = parser(link, i + 1)
-                          if proxy_config:
-                              outbounds.append(proxy_config)
-                              tag_map[safe_tag] = original_tag
-                      except Exception:
+
+                  if parser is None:
+                      skipped_count += 1
+                      continue
+
+                  try:
+                      proxy_config, safe_tag, original_tag = (
+                          parser(link, index)
+                      )
+
+                      if not proxy_config:
                           skipped_count += 1
-                  else:
+                          continue
+
+                      # Critical validation:
+                      # Sing-box expects server to be a string.
+                      if "server" in proxy_config:
+                          proxy_config["server"] = str(
+                              proxy_config["server"]
+                          )
+
+                      if not isinstance(
+                          proxy_config.get("server_port"),
+                          int
+                      ):
+                          proxy_config["server_port"] = int(
+                              proxy_config["server_port"]
+                          )
+
+                      if not proxy_config.get("server"):
+                          raise ValueError(
+                              "Empty server address"
+                          )
+
+                      if not proxy_config.get("server_port"):
+                          raise ValueError(
+                              "Invalid server port"
+                          )
+
+                      outbounds.append(proxy_config)
+
+                      tag_map[safe_tag] = original_tag
+
+                      processed_count += 1
+
+                  except Exception as error:
                       skipped_count += 1
 
+                      print(
+                          f"Skipping proxy #{index}: {error}"
+                      )
+
           except FileNotFoundError:
-              print(f"Error: Input file '{INPUT_FILE}' not found.", file=sys.stderr)
+              print(
+                  f"ERROR: Input file '{INPUT_FILE}' not found.",
+                  file=sys.stderr
+              )
+
               sys.exit(1)
 
+          # Remove duplicate outbounds.
+          unique_outbounds = []
+          seen = set()
+
+          for outbound in outbounds:
+              key = json.dumps(
+                  outbound,
+                  sort_keys=True,
+                  ensure_ascii=False
+              )
+
+              if key not in seen:
+                  seen.add(key)
+                  unique_outbounds.append(outbound)
+
+          outbounds = unique_outbounds
+
           final_config = {
-              "log": {"level": "warn"},
-              "inbounds": [{"type": "tun", "tag": "tun-in"}],
+              "log": {
+                  "level": "warn"
+              },
+
+              "inbounds": [
+                  {
+                      "type": "tun",
+                      "tag": "tun-in"
+                  }
+              ],
+
               "outbounds": outbounds
           }
 
-          with open(CONFIG_OUTPUT_FILE, 'w') as f: json.dump(final_config, f, indent=2)
-          with open(MAP_OUTPUT_FILE, 'w', encoding='utf-8') as f: json.dump(tag_map, f, indent=2, ensure_ascii=False)
+          # Validate generated JSON before saving.
+          try:
+              json.dumps(
+                  final_config,
+                  ensure_ascii=False
+              )
 
-          print(f"Successfully processed {len(outbounds)} nodes. Skipped {skipped_count} unsupported or invalid links.")
-          print(f"Created config '{CONFIG_OUTPUT_FILE}' and map '{MAP_OUTPUT_FILE}'.")
-          EOF
+          except Exception as error:
+              print(
+                  f"ERROR: Generated configuration is invalid: {error}",
+                  file=sys.stderr
+              )
+
+              sys.exit(1)
+
+          with open(
+              CONFIG_OUTPUT_FILE,
+              "w",
+              encoding="utf-8"
+          ) as file:
+              json.dump(
+                  final_config,
+                  file,
+                  indent=2,
+                  ensure_ascii=False
+              )
+
+          with open(
+              MAP_OUTPUT_FILE,
+              "w",
+              encoding="utf-8"
+          ) as file:
+              json.dump(
+                  tag_map,
+                  file,
+                  indent=2,
+                  ensure_ascii=False
+              )
+
+          print(
+              f"Successfully processed {processed_count} nodes."
+          )
+
+          print(
+              f"Unique outbounds: {len(outbounds)}"
+          )
+
+          print(
+              f"Skipped {skipped_count} unsupported or invalid links."
+          )
+
+          print(
+              f"Created '{CONFIG_OUTPUT_FILE}' and '{MAP_OUTPUT_FILE}'."
+          )
+
+          if not outbounds:
+              print(
+                  "ERROR: No valid proxies were generated.",
+                  file=sys.stderr
+              )
+
+              sys.exit(1)
+
+          PYTHON
+
           python convert_to_singbox.py
+
+      - name: Validate Sing-Box Configuration
+        run: |
+          python - <<'PY'
+          import json
+          import sys
+
+          with open(
+              "singbox_config.json",
+              "r",
+              encoding="utf-8"
+          ) as file:
+              config = json.load(file)
+
+          outbounds = config.get("outbounds", [])
+
+          if not outbounds:
+              print("ERROR: No outbounds found.")
+              sys.exit(1)
+
+          for index, outbound in enumerate(outbounds):
+              server = outbound.get("server")
+
+              if not isinstance(server, str):
+                  print(
+                      f"ERROR: Outbound #{index} server "
+                      f"must be a string, got {type(server).__name__}"
+                  )
+                  sys.exit(1)
+
+              port = outbound.get("server_port")
+
+              if not isinstance(port, int):
+                  print(
+                      f"ERROR: Outbound #{index} server_port "
+                      f"must be an integer"
+                  )
+                  sys.exit(1)
+
+          print(
+              f"Configuration validated: {len(outbounds)} outbounds."
+          )
+          PY
 
       - name: Download and Prepare singtools
         run: |
+          set -e
+
           echo "Downloading singtools..."
-          wget -O singtools.tar.gz https://github.com/Kdwkakcs/singtools/releases/download/vv0.2.0/singtools_linux32.tar.gz
+
+          wget -O singtools.tar.gz \
+            https://github.com/Kdwkakcs/singtools/releases/download/vv0.2.0/singtools_linux32.tar.gz
+
           echo "Extracting singtools..."
+
           tar -xzvf singtools.tar.gz
+
           chmod +x ./singtools
+
           echo "singtools is ready."
+
           ./singtools -v
 
       - name: Run Speed Test with singtools
         run: |
+          set -e
+
           echo "Starting the speed test with full sing-box config..."
-          ./singtools test -i singbox_config.json -c utils/speedtest/config.json -o out.json -m meta.json -d -r -e warn -f ""
+
+          if [ ! -s singbox_config.json ]; then
+            echo "ERROR: singbox_config.json is missing or empty."
+            exit 1
+          fi
+
+          ./singtools test \
+            -i singbox_config.json \
+            -c utils/speedtest/config.json \
+            -o out.json \
+            -m meta.json \
+            -d \
+            -r \
+            -e warn \
+            -f ""
 
       - name: Process Test Results
         run: |
+          set -e
+
           echo "Processing metadata, sorting, and creating geo-balanced lists..."
+
+          if [ ! -f out.json ]; then
+            echo "ERROR: Speed test output out.json was not created."
+            exit 1
+          fi
+
           python utils/speedtest/process_results.py
 
       - name: Commit and Push Results
         run: |
+          set -e
+
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git pull origin ${{ github.ref_name }}
+
           git add -A
+
           if ! git diff --staged --quiet; then
             git commit -m "✔️ Updated proxy lists"
-            git push
+
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+
+            git push origin "HEAD:${GITHUB_REF_NAME}"
           else
             echo "No changes to commit."
           fi
