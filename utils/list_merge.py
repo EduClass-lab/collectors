@@ -54,6 +54,9 @@ class sub_merge():
 
                     if content == 'Url 解析错误':
                         content = sub_convert.main(each_url, 'url', 'url')
+                        # Create file if it doesn't exist
+                        if not os.path.exists(sub_list_path):
+                            open(sub_list_path, 'w', encoding='utf-8').close()
                         if content != 'Url 解析错误':
                             if add_valid(content) != '':
                                 content_list.append(content)
