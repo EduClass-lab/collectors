@@ -94,3 +94,188 @@ class sub_merge():
                         file = open(f'{sub_list_path}{ids:0>2d}.txt',
                                     'a+', encoding='utf-8')
                         file.write('Url Subscription could not be parsed')
+                        file.close()
+                        print(
+                            f'Writing error of {remarks} to {ids:0>2d}.txt\n')
+
+            # it's not coming down here just adding it :)
+            else:
+                each_url = url_container["url"]
+                content = ''
+                print("gather server from " + each_url)
+                content += sub_convert.convert_remote(
+                    each_url, 'url', 'http://127.0.0.1:25500')
+
+                if content == 'Url 解析错误':
+                    content = sub_convert.main(each_url, 'url', 'url')
+                    if content != 'Url 解析错误':
+                        if add_valid(content) != '':
+                            content_list.append(content)
+                        else:
+                            print(f'this url failed{each_url}')
+
+                        print(
+                            f'Writing content of {remarks} to {ids:0>2d}.txt\n')
+                    else:
+                        print(
+                            f'Writing error of {remarks} to {ids:0>2d}.txt\n')
+                    file = open(f'{sub_list_path}{ids:0>2d}.txt',
+                                'a+', encoding='utf-8')
+                    file.write(content)
+                    file.close()
+                elif content == 'Url 订阅内容无法解析':
+                    file = open(f'{sub_list_path}{ids:0>2d}.txt',
+                                'a+', encoding='utf-8')
+                    file.write('Url Subscription could not be parsed')
+                    file.close()
+                    print(f'Writing error of {remarks} to {ids:0>2d}.txt\n')
+                elif content != None:
+                    content_list.append(content)
+                    file = open(f'{sub_list_path}{ids:0>2d}.txt',
+                                'a+', encoding='utf-8')
+                    file.write(content)
+                    file.close()
+                    print(f'Writing content of {remarks} to {ids:0>2d}.txt\n')
+                else:
+                    file = open(f'{sub_list_path}{ids:0>2d}.txt',
+                                'a+', encoding='utf-8')
+                    file.write('Url Subscription could not be parsed')
+                    file.close()
+                    print(f'Writing error of {remarks} to {ids:0>2d}.txt\n')
+
+            print('already gathered ' +
+                  str(''.join(content_list).split('\n').__len__()))
+            print('\n')
+
+        print('Merging nodes...\n')
+        # content_raw = '\n'.join(content_list)
+
+        content_list = list(
+            filter(lambda x: x != '', ''.join(content_list).split("\n")))
+        # dup remove by string content
+#         print("it was " + str(content_list.__len__()))
+#         content_list = list(set(content_list))
+#         print("now is " + str(content_list.__len__()))
+        content_list = list(filter(lambda x: x.startswith("ssr://") or x.startswith("ss://")
+                                            or x.startswith("trojan://") or x.startswith("vmess://") or x.startswith("vless://"), content_list))
+
+        content_list = list(
+            filter(lambda x: x.__contains__("订阅内容解析错误") == False, content_list))
+        content_raw = "\n".join(content_list)
+
+        print(f"it's fine till here with {content_list.__len__()} lines")
+
+        # content_yaml = sub_convert.main(content_raw, 'content', 'content', {
+        #                                 'dup_rm_enabled': True, 'format_name_enabled': True})
+        # final_content = sub_convert.makeup(
+        #     content_raw, True, True)
+        # content_raw = sub_convert.yaml_decode(final_content)
+
+        content_yaml = sub_convert.main(content_raw, 'content', 'YAML', {
+            'dup_rm_enabled': True, 'format_name_enabled': True})
+
+        yaml_proxies = content_yaml.split('\n')[1:]
+        temp = list(filter(lambda x: re.search(ipv6, x) ==
+                    None or re.search(ipv4, x) != None, yaml_proxies))
+        temp = list(filter(lambda x: re.search(
+            "path: /(.*?)\?(.*?)=(.*?)}", x) == None, temp))
+
+        temp2 = temp
+        temp = []
+        for pr in temp2:
+            try:
+                yaml.safe_load(pr)
+                temp.append(pr)
+            except Exception as e:
+                print(e)
+
+        print(f"found {yaml_proxies.__len__() - temp.__len__()} bad lines :)")
+        ###temp###
+#         print(temp)
+        ##########
+        content_yaml = "\n".join(temp)
+        if content_yaml[-1:] == '\n':
+            content_yaml[-1:] = ''
+        content_yaml = 'proxies:\n' + content_yaml
+
+        # todo removed dup
+        content_raw = sub_convert.yaml_decode(content_yaml)
+
+#         print('decoded content')
+#         print(content_raw)
+
+        # note removed here
+        # content_raw = list(
+        #     filter(lambda x: x != '', content_raw.split("\n")))
+        # content_raw = "\n".join(content_raw)
+
+        content_base64 = sub_convert.base64_encode(content_raw)
+
+        content = content_raw
+
+        ##############################
+
+        def content_write(file, output_type):
+            file = open(file, 'w+', encoding='utf-8')
+            file.write(output_type)
+            file.close
+
+        write_list = [f'{sub_merge_path}/sub_merge.txt',
+                      f'{sub_merge_path}/sub_merge_base64.txt', f'{sub_merge_path}/sub_merge_yaml.yml']
+        content_type = (content, content_base64, content_yaml)
+        for index in range(len(write_list)):
+            content_write(write_list[index], content_type[index])
+        print('Done!\n')
+
+    def read_list(json_file, remote=False):  # 将 sub_list.json Url 内容读取为列表
+        with open(json_file, 'r', encoding='utf-8') as f:
+            raw_list = json.load(f)
+        input_list = []
+        for index in range(len(raw_list)):
+            if raw_list[index]['enabled']:
+                if remote == False:
+                    urls = re.split('\|', raw_list[index]['url'])
+                else:
+                    urls = raw_list[index]['url']
+                raw_list[index]['url'] = urls
+                input_list.append(raw_list[index])
+        return input_list
+
+    def geoip_update(url):
+        print('Downloading Country.mmdb...')
+        try:
+            request.urlretrieve(url, './utils/Country.mmdb')
+            print('Success!\n')
+        except Exception:
+            print('Failed!\n')
+            pass
+
+
+
+if __name__ == '__main__':
+    update_url.update_main(use_airport=False, airports_id=[
+                           5], sub_list_json="./sub/sub_list.json")
+    sub_merge.geoip_update(
+        'https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb')
+
+    sub_list = sub_merge.read_list(sub_list_json)
+    sub_list_remote = sub_merge.read_list(sub_list_json, True)
+
+    # default method
+    # sub_merge.sub_merge(sub_list)
+    # sub_merge.readme_update(readme, sub_list)
+
+    # fixed convertor in default method
+    # subs.get_subs(sub_list)
+    # sub_merge.readme_update(readme, sub_list)
+
+    # using corresponding proxies method
+    # subs.get_subs_v2(sub_list)
+    # sub_merge.readme_update(readme, sub_list)
+
+    # Ensure the per-subscription output directory exists before get_subs_v3 writes files.
+    os.makedirs(sub_list_path, exist_ok=True)
+
+    # eject sub converting using local method and using sub convertor instead (only yaml available there is no
+    # base64 or mixed type proxy in this method and other types will be handle using other workflows)
+    subs.get_subs_v3(list(filter(lambda x: x['id'] != 5, sub_list)))
