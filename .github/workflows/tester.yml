@@ -12,18 +12,18 @@ permissions:
 jobs:
   test-and-sort-proxies:
     name: Test and Sort Proxies
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04.5
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v5.0.0
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
       - name: Setup Python
-        uses: actions/setup-python@v6.0.0
+        uses: actions/setup-python@v7
         with:
-          python-version: "3.11.13"
+          python-version: "3.11.x"
 
       - name: Install Python Dependencies
         run: |
