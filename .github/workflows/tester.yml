@@ -2,21 +2,17 @@ name: Test Proxies
 
 on:
   workflow_dispatch:
-    inputs:
-      trigger_bot:
-        description: "Trigger VPB Telegram Bot"
-        type: boolean
-        default: true
+
 
 jobs:
   prepare-matrix:
     name: Generate Chunks
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7.0.1
 
       - id: set-matrix
         name: Generate matrix bounds
@@ -64,19 +60,19 @@ jobs:
     name: Test Nodes (${{ matrix.start }} to ${{ matrix.end }})
     needs: prepare-matrix
     if: ${{ needs.prepare-matrix.outputs.matrix != '{"include":[]}' }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 120
     strategy:
       matrix: ${{ fromJSON(needs.prepare-matrix.outputs.matrix) }}
       fail-fast: false
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7.0.1
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7.1.0
         with:
-          python-version: "3.11"
+          python-version: "3.11.x"
 
       - name: Install Dependencies
         run: |
@@ -909,19 +905,19 @@ jobs:
   merge-and-publish:
     name: Merge Results and Publish
     needs: test-chunk
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: write
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7.1.0
         with:
-          python-version: "3.11"
+          python-version: "3.11.x"
 
       - name: Install Dependencies
         run: |
@@ -1007,11 +1003,3 @@ jobs:
           else
             echo "No changes to commit."
           fi
-
-      - name: Trigger Run
-        if: success() && (inputs.trigger_bot == true || inputs.trigger_bot == 'true')
-        env:
-          GH_TOKEN: ${{ secrets.VPB_PAT }}
-        run: |
-          echo "Triggering run_bot.yml"
-          gh workflow run run_bot.yml --repo VPNforWindowsSub/VPB --ref main
